@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İletişim — CROM TEST</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,300;1,6..12,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:      #011f45;
+  --blue:      #024f98;
+  --blue-mid:  #1a6bbf;
+  --teal:      #0a8fa0;
+  --sky:       #4ab3d4;
+  --steel:     #6b8fa8;
+  --smoke:     #d8e8f0;
+  --white:     #f9fbfd;
+  --ink:       #0b1c30;
+  --mid:       #3d5a78;
+  --light:     #eaf3f8;
+  --warn:      #c45c14;
+  --green:     #1a7a4a;
+  --ff-display: 'Nunito Sans', sans-serif;
+  --ff-body:    'Source Sans 3', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--light); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(249, 251, 253, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(2, 79, 152, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  height: 72px;
+  transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: 0 4px 32px rgba(1, 31, 69, 0.08); }
+.nav-logo img { height: 48px; width: auto; display: block; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--ff-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-links a.active { color: var(--blue); }
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.btn-outline {
+  font-family: var(--ff-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  padding: 0.6rem 1.4rem;
+  border: 1.5px solid rgba(2, 79, 152, 0.35);
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-outline:hover {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+.btn-primary {
+  font-family: var(--ff-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.65rem 1.5rem;
+  background: var(--blue);
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(2, 79, 152, 0.3);
+}
+.btn-primary:hover {
+  background: var(--navy);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(2, 79, 152, 0.4);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: var(--navy);
+  padding: 140px 6vw 80px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-mesh {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 70% at 70% 40%, rgba(10,143,160,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 55% at 15% 75%, rgba(2,79,152,.32) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 35% at 85% 10%, rgba(74,179,212,.1) 0%, transparent 50%);
+}
+.page-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--ff-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(10,143,160,.08);
+  border: 1px solid rgba(10,143,160,.25);
+  border-radius: 100px;
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 1.6rem;
+}
+.section-label::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+.page-hero .section-label {
+  color: var(--sky);
+  border-color: rgba(74,179,212,.3);
+  background: rgba(74,179,212,.08);
+}
+.page-hero .section-label::before { background: var(--sky); }
+.page-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 1.4rem;
+}
+.page-title .accent { color: var(--sky); }
+.page-sub {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+  max-width: 520px;
+}
+
+/* ── CONTACT SECTION ── */
+.contact-section {
+  padding: 6rem 6vw;
+  background: var(--white);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Form */
+.contact-form-wrap h2 {
+  font-family: var(--ff-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.contact-form-wrap p {
+  font-size: 0.95rem;
+  color: var(--mid);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.2rem;
+}
+.form-group:last-child { margin-bottom: 0; }
+.form-group label {
+  font-family: var(--ff-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--smoke);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--steel); opacity: 0.6; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(2, 79, 152, 0.1);
+}
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8fa8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+}
+.form-submit {
+  margin-top: 2rem;
+}
+.btn-submit {
+  font-family: var(--ff-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--blue);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2.4rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 6px 24px rgba(2, 79, 152, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.btn-submit:hover {
+  background: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(2, 79, 152, 0.45);
+}
+.btn-submit:active { transform: translateY(0); }
+.btn-submit svg { width: 16px; height: 16px; transition: transform 0.2s; }
+.btn-submit:hover svg { transform: translateX(3px); }
+
+/* Sidebar */
+.contact-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact-card {
+  background: var(--light);
+  border: 1px solid var(--smoke);
+  border-radius: 16px;
+  padding: 2rem;
+}
+.contact-card-title {
+  font-family: var(--ff-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.4rem;
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(2, 79, 152, 0.07);
+}
+.contact-item:last-child { border-bottom: none; padding-bottom: 0; }
+.contact-item-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(2, 79, 152, 0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--blue);
+}
+.contact-item-icon svg { width: 16px; height: 16px; }
+.contact-item-body {}
+.contact-item-label {
+  font-family: var(--ff-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 0.2rem;
+}
+.contact-item-value {
+  font-size: 0.92rem;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.5;
+}
+.contact-item-value a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-item-value a:hover { color: var(--navy); }
+
+.cert-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--ff-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  background: rgba(2, 79, 152, 0.08);
+  border: 1px solid rgba(2, 79, 152, 0.2);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+}
+.cert-badge::before {
+  content: '✓';
+  color: var(--teal);
+  font-size: 0.75rem;
+}
+
+.response-note {
+  background: rgba(10,143,160,.06);
+  border: 1px solid rgba(10,143,160,.2);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+.response-note-icon {
+  color: var(--teal);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.response-note-icon svg { width: 16px; height: 16px; }
+.response-note p {
+  font-size: 0.85rem;
+  color: var(--mid);
+  line-height: 1.6;
+  font-weight: 400;
+}
+.response-note strong { color: var(--teal); font-weight: 600; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 5rem 6vw 3rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo { margin-bottom: 1.4rem; }
+.footer-logo img { height: 32px; width: auto; }
+.footer-tagline {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 280px;
+  margin-bottom: 2rem;
+}
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-social {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.footer-social:hover {
+  background: rgba(74,179,212,0.15);
+  color: var(--sky);
+  border-color: rgba(74,179,212,0.3);
+}
+.footer-social svg { width: 16px; height: 16px; }
+.footer-col-title {
+  font-family: var(--ff-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 1.4rem;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.footer-links a {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #fff; }
+.footer-bottom {
+  padding-top: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  font-weight: 300;
+}
+.footer-legal { display: flex; gap: 2rem; }
+.footer-legal a {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-sidebar { flex-direction: row; flex-wrap: wrap; }
+  .contact-sidebar > * { flex: 1 1 280px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-section { padding: 4rem 5vw; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-legal { justify-content: center; }
+  .contact-sidebar { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="Brand_Guideline/logo_if_white.svg" alt="CROM TEST">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#products">Ürünler</a></li>
+    <li><a href="index.html#technology">Teknoloji</a></li>
+    <li><a href="index.html#certifications">Sertifikalar</a></li>
+    <li><a href="index.html#industries">Sektörler</a></li>
+    <li><a href="contact.html" class="active">İletişim</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="contact.html" class="btn-outline">Katalog İndir</a>
+    <a href="contact.html" class="btn-primary">Teklif Al</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-mesh"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-label">İletişim</div>
+    <h1 class="page-title">Bizimle<br><span class="accent">İletişime</span><br>Geçin</h1>
+    <p class="page-sub">Ürün bilgisi, teklif talebi, teknik destek veya dağıtım ortaklığı için uzman ekibimiz her adımda yanınızda olacaktır.</p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="contact-grid">
+
+    <!-- FORM -->
+    <div class="contact-form-wrap">
+      <h2>Mesaj Gönderin</h2>
+      <p>Formu doldurun, ekibimiz en geç 1 iş günü içinde size geri dönsün.</p>
+
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">Ad</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Adınız" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Soyad</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Soyadınız" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">E-posta</label>
+            <input type="email" id="email" name="email" placeholder="ornek@sirket.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" placeholder="+90 5__ ___ __ __">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="company">Şirket / Kurum</label>
+          <input type="text" id="company" name="company" placeholder="Kurum adı">
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Konu</label>
+          <select id="subject" name="subject" required>
+            <option value="" disabled selected>Lütfen bir konu seçin</option>
+            <option value="quote">Fiyat Teklifi / Teklif Al</option>
+            <option value="catalog">Katalog Talebi</option>
+            <option value="technical">Teknik Destek</option>
+            <option value="distribution">Dağıtım Ortaklığı</option>
+            <option value="oem">OEM / Özel Etiket</option>
+            <option value="other">Diğer</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mesajınız</label>
+          <textarea id="message" name="message" placeholder="Talebinizi veya sorunuzu buraya yazın..." required></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">
+            Gönder
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="contact-sidebar">
+
+      <div class="contact-card">
+        <div class="contact-card-title">İletişim Bilgileri</div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+            </svg>
+          </div>
+          <div class="contact-item-body">
+            <div class="contact-item-label">E-posta</div>
+            <div class="contact-item-value">
+              <a href="mailto:destek@cromtest.com">destek@cromtest.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/>
+            </svg>
+          </div>
+          <div class="contact-item-body">
+            <div class="contact-item-label">Web</div>
+            <div class="contact-item-value">
+              <a href="index.html">www.cromtest.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="contact-item-body">
+            <div class="contact-item-label">Yanıt Süresi</div>
+            <div class="contact-item-value">1 iş günü içinde</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-title">Sertifikalar</div>
+        <div class="cert-badges">
+          <span class="cert-badge">CE İşaretli</span>
+          <span class="cert-badge">ISO 13485</span>
+          <span class="cert-badge">IVDR Uyumlu</span>
+          <span class="cert-badge">SAMHSA Onaylı</span>
+          <span class="cert-badge">EMCDDA</span>
+        </div>
+      </div>
+
+      <div class="response-note">
+        <div class="response-note-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/>
+          </svg>
+        </div>
+        <p>Dağıtım ortaklığı ve OEM sorguları için lütfen <strong>Dağıtım Ortaklığı</strong> konusunu seçin. Uzman ekibimiz öncelikli olarak geri dönecektir.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="Brand_Guideline/logo_if_color.svg" alt="CROM TEST">
+      </div>
+      <p class="footer-tagline">
+        CE sertifikalı ilaç maddesi in vitro tanı testi kitlerinin üreticisi ve tedarikçisi. Sağlık profesyonelleri ve kurumları tarafından güvenilmektedir.
+      </p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social" aria-label="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+        <a href="#" class="footer-social" aria-label="Twitter / X">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="#" class="footer-social" aria-label="YouTube">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Ürünler</div>
+      <ul class="footer-links">
+        <li><a href="index.html#products">İlaç Test Kitleri</a></li>
+        <li><a href="index.html#products">İlaç Test Stripleri</a></li>
+        <li><a href="index.html#products">Tükürük Test Kitleri</a></li>
+        <li><a href="index.html#products">Okuyucu Cihazlar</a></li>
+        <li><a href="contact.html">OEM / Özel Etiket</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Kurumsal</div>
+      <ul class="footer-links">
+        <li><a href="index.html#technology">Teknoloji</a></li>
+        <li><a href="index.html#certifications">Sertifikalar</a></li>
+        <li><a href="index.html#industries">Sektörler</a></li>
+        <li><a href="contact.html">Hakkımızda</a></li>
+        <li><a href="contact.html">Distribütörler</a></li>
+        <li><a href="contact.html">Kariyer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">İletişim</div>
+      <ul class="footer-links">
+        <li><a href="mailto:destek@cromtest.com">destek@cromtest.com</a></li>
+        <li><a href="contact.html">Teklif Al</a></li>
+        <li><a href="contact.html">Katalog İndir</a></li>
+        <li><a href="contact.html">Teknik Destek</a></li>
+        <li><a href="contact.html">Dağıtım Sorguları</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 CROM TEST. Tüm hakları saklıdır. CE işaretli tıbbi cihazlar.</div>
+    <div class="footer-legal">
+      <a href="contact.html">Gizlilik Politikası</a>
+      <a href="contact.html">Kullanım Koşulları</a>
+      <a href="contact.html">Mevzuat Uyumluluğu</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.btn-submit');
+    btn.textContent = 'Gönderildi ✓';
+    btn.style.background = '#1a7a4a';
+    btn.disabled = true;
+  });
+</script>
+
+</body>
+</html>
