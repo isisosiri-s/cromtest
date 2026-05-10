@@ -435,8 +435,13 @@ body {
 
 /* ── FOOTER ── */
 footer {
-  background: var(--navy);
+  background:
+    radial-gradient(ellipse 65% 55% at 8% 100%, rgba(10,143,160,.14) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 65% at 92% 0%, rgba(74,179,212,.09) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 55% 55%, rgba(2,79,152,.10) 0%, transparent 60%),
+    linear-gradient(160deg, #011f45 0%, #012a5e 55%, #011f45 100%);
   padding: 5rem 6vw 3rem;
+  position: relative;
 }
 .footer-grid {
   display: grid;
