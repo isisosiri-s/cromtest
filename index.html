@@ -15,12 +15,12 @@
   --teal:      #0a8fa0;
   --sky:       #4ab3d4;
   --steel:     #6b8fa8;
-  --smoke:     #d8e8f0;
-  --white:     #f9fbfd;
+  --smoke:     #cde5f0;
+  --white:     #ffffff;
   --ink:       #0b1c30;
   --mid:       #3d5a78;
-  --light:     #eaf3f8;
-  --warn:      #c45c14;
+  --light:     #eaf4f9;
+  --light-2:   #d6edf8;
   --green:     #1a7a4a;
   --ff-display: 'Nunito Sans', sans-serif;
   --ff-body:    'Source Sans 3', sans-serif;
@@ -28,7 +28,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  background: var(--white);
+  background: #e8f4f9;
   color: var(--ink);
   font-family: var(--ff-body);
   overflow-x: hidden;
@@ -37,17 +37,17 @@ body {
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--light); }
-::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 2px; }
 
 /* ── NAVBAR ── */
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(249, 251, 253, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(2, 79, 152, 0.1);
+  border-bottom: 1px solid rgba(1, 31, 69, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,7 +59,7 @@ body {
   box-shadow: 0 4px 32px rgba(1, 31, 69, 0.08);
 }
 .nav-logo img {
-  height: 48px;
+  height: 44px;
   width: auto;
   display: block;
 }
@@ -71,7 +71,7 @@ body {
 }
 .nav-links a {
   font-family: var(--ff-display);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -79,7 +79,7 @@ body {
   text-decoration: none;
   transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--blue); }
+.nav-links a:hover { color: var(--teal); }
 .nav-cta {
   display: flex;
   align-items: center;
@@ -87,47 +87,47 @@ body {
 }
 .btn-outline {
   font-family: var(--ff-display);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: var(--teal);
   text-decoration: none;
   padding: 0.6rem 1.4rem;
-  border: 1.5px solid rgba(2, 79, 152, 0.35);
+  border: 1.5px solid rgba(10, 143, 160, 0.35);
   border-radius: 6px;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .btn-outline:hover {
-  background: var(--blue);
+  background: var(--teal);
   color: #fff;
-  border-color: var(--blue);
+  border-color: var(--teal);
 }
 .btn-primary {
   font-family: var(--ff-display);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
   padding: 0.65rem 1.5rem;
-  background: var(--blue);
+  background: var(--teal);
   border-radius: 6px;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px rgba(2, 79, 152, 0.3);
+  box-shadow: 0 4px 16px rgba(10, 143, 160, 0.28);
 }
 .btn-primary:hover {
-  background: var(--navy);
+  background: var(--blue);
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(2, 79, 152, 0.4);
+  box-shadow: 0 8px 24px rgba(10, 143, 160, 0.38);
 }
 .btn-primary:active { transform: translateY(0); }
 
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
-  background: var(--navy);
+  background: linear-gradient(145deg, #f4faff 0%, #deeef8 40%, #c6e3f4 70%, #a8d4ec 100%);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -138,23 +138,16 @@ body {
 .hero-mesh {
   position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(ellipse 65% 80% at 78% 38%, rgba(10,143,160,.2) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 60% at 18% 72%, rgba(2,79,152,.38) 0%, transparent 55%),
-    radial-gradient(ellipse 35% 40% at 58% 8%, rgba(74,179,212,.12) 0%, transparent 50%),
-    radial-gradient(ellipse 25% 30% at 90% 85%, rgba(26,107,191,.2) 0%, transparent 50%);
+    radial-gradient(ellipse 70% 60% at 85% 35%, rgba(255,255,255,.55) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 70% at 15% 75%, rgba(10,143,160,.1) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 35% at 50% 10%, rgba(255,255,255,.4) 0%, transparent 50%);
 }
 .hero-grid {
   position: absolute; inset: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    linear-gradient(rgba(1,31,69,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(1,31,69,.04) 1px, transparent 1px);
   background-size: 56px 56px;
-}
-.hero-noise {
-  position: absolute; inset: 0; pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
 }
 .hero-content {
   position: relative;
@@ -164,46 +157,46 @@ body {
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
   font-family: var(--ff-display);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--sky);
+  color: var(--teal);
   margin-bottom: 1.8rem;
   opacity: 0;
   animation: fadeUp 0.6s 0.2s forwards;
 }
 .hero-eyebrow::before {
   content: '';
-  width: 24px;
-  height: 2px;
-  background: var(--sky);
+  width: 28px;
+  height: 1px;
+  background: var(--teal);
   border-radius: 1px;
 }
 .hero-title {
   font-family: var(--ff-display);
-  font-size: clamp(3rem, 7.5vw, 6.8rem);
+  font-size: clamp(3rem, 7.5vw, 6.2rem);
   font-weight: 800;
   line-height: 0.93;
   letter-spacing: 0;
-  color: #fff;
+  color: var(--navy);
   opacity: 0;
   animation: fadeUp 0.7s 0.35s forwards;
 }
-.hero-title .accent { color: var(--sky); }
+.hero-title .accent { color: var(--teal); }
 .hero-title .line2 {
   display: block;
-  color: rgba(255,255,255,0.45);
+  color: rgba(1,31,69,0.4);
   font-weight: 300;
 }
 .hero-sub {
   margin-top: 2.2rem;
   max-width: 500px;
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   line-height: 1.75;
-  color: rgba(255,255,255,0.5);
+  color: rgba(1,31,69,0.55);
   font-weight: 300;
   opacity: 0;
   animation: fadeUp 0.7s 0.5s forwards;
@@ -225,17 +218,17 @@ body {
   color: #fff;
   text-decoration: none;
   padding: 0.9rem 2rem;
-  background: var(--blue);
+  background: var(--teal);
   border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 6px 24px rgba(2, 79, 152, 0.5);
+  box-shadow: 0 6px 24px rgba(10, 143, 160, 0.38);
 }
 .btn-hero-primary:hover {
-  background: var(--blue-mid);
+  background: var(--blue);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(2, 79, 152, 0.6);
+  box-shadow: 0 12px 32px rgba(10, 143, 160, 0.45);
 }
 .btn-hero-outline {
   font-family: var(--ff-display);
@@ -243,19 +236,19 @@ body {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.75);
+  color: var(--mid);
   text-decoration: none;
   padding: 0.9rem 2rem;
-  background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.7);
+  border: 1.5px solid rgba(1,31,69,0.15);
   border-radius: 8px;
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 .btn-hero-outline:hover {
-  border-color: rgba(255,255,255,0.5);
-  color: #fff;
-  background: rgba(255,255,255,0.06);
+  border-color: var(--teal);
+  color: var(--teal);
+  background: rgba(255,255,255,0.9);
 }
 
 .hero-stats {
@@ -271,18 +264,18 @@ body {
   font-family: var(--ff-display);
   font-size: 1.9rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--navy);
   line-height: 1;
   letter-spacing: 0;
 }
-.hero-stat-value span { color: var(--sky); }
+.hero-stat-value span { color: var(--teal); }
 .hero-stat-label {
   margin-top: 0.35rem;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: rgba(1,31,69,0.38);
 }
 
 .hero-visual {
@@ -295,38 +288,39 @@ body {
   pointer-events: none;
 }
 .hero-visual img {
-  width: 300px;
-  opacity: 0.12;
+  width: 260px;
+  opacity: 0.18;
 }
 
 /* ── TICKER ── */
 .ticker-wrap {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  height: 44px;
+  border-top: 1px solid rgba(1,31,69,0.08);
+  height: 40px;
   overflow: hidden;
   display: flex;
   align-items: center;
   z-index: 2;
+  background: rgba(255,255,255,.35);
 }
 .ticker-inner {
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
   animation: ticker 30s linear infinite;
   white-space: nowrap;
 }
 .ticker-inner span {
   font-family: var(--ff-display);
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: rgba(1,31,69,0.22);
 }
 .ticker-dot {
-  color: var(--sky) !important;
-  font-size: 0.5rem !important;
+  color: var(--teal) !important;
+  font-size: 0.45rem !important;
 }
 @keyframes ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }
 @keyframes fadeUp { from { opacity:0; transform: translateY(22px) } to { opacity:1; transform: translateY(0) } }
@@ -352,7 +346,8 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--light);
+  background: rgba(10,143,160,.08);
+  border: 1px solid rgba(10,143,160,.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -371,7 +366,7 @@ body {
   font-size: 0.72rem;
   color: var(--steel);
   margin-top: 0.1rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 .trust-divider {
   width: 1px;
@@ -381,40 +376,40 @@ body {
 
 /* ── SECTION BASE ── */
 section { padding: 7rem 6vw; }
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--ff-display);
-  font-size: 0.65rem;
+.section-tag {
+  display: inline-block;
+  font-family: var(--ff-body);
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--blue-mid);
-  margin-bottom: 1.2rem;
-  padding: 0.35rem 0.9rem;
-  border: 1px solid rgba(2,79,152,.18);
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(2,79,152,.2);
   border-radius: 100px;
   background: rgba(2,79,152,.05);
+  margin-bottom: 1.2rem;
 }
-.section-label::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--blue-mid);
+.section-tag.teal {
+  color: var(--teal);
+  border-color: rgba(10,143,160,.25);
+  background: rgba(10,143,160,.06);
 }
 .section-title {
   font-family: var(--ff-display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
   line-height: 1.04;
   letter-spacing: 0;
   color: var(--navy);
   margin-bottom: 1rem;
 }
+.section-title em {
+  font-style: normal;
+  color: var(--teal);
+}
 .section-desc {
-  font-size: 1.02rem;
+  font-size: 0.95rem;
   line-height: 1.75;
   color: var(--mid);
   max-width: 560px;
@@ -423,7 +418,7 @@ section { padding: 7rem 6vw; }
 
 /* ── PRODUCTS SECTION ── */
 .products-section {
-  background: linear-gradient(155deg, var(--navy) 0%, #013069 60%, #024f98 100%);
+  background: linear-gradient(135deg, var(--light) 0%, rgba(74,179,212,.12) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -431,18 +426,13 @@ section { padding: 7rem 6vw; }
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 60% 70% at 90% 20%, rgba(74,179,212,.12) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(10,143,160,.15) 0%, transparent 55%);
+    radial-gradient(ellipse 60% 70% at 90% 10%, rgba(255,255,255,.6) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 5% 90%, rgba(10,143,160,.08) 0%, transparent 55%);
   pointer-events: none;
 }
-.products-section .section-label {
-  color: var(--sky);
-  border-color: rgba(74,179,212,.3);
-  background: rgba(74,179,212,.08);
-}
-.products-section .section-label::before { background: var(--sky); }
-.products-section .section-title { color: #fff; }
-.products-section .section-desc { color: rgba(255,255,255,0.5); }
+.products-section .section-tag { color: var(--teal); border-color: rgba(10,143,160,.25); background: rgba(10,143,160,.06); }
+.products-section .section-title { color: var(--navy); }
+.products-section .section-desc { color: var(--mid); }
 
 .products-header {
   display: flex;
@@ -456,69 +446,75 @@ section { padding: 7rem 6vw; }
 }
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 1.5rem;
   position: relative;
   z-index: 2;
 }
 .product-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #fff;
+  border: 1px solid var(--smoke);
+  border-left: 3px solid var(--sky);
   border-radius: 16px;
-  padding: 2.2rem;
-  transition: background 0.3s, border-color 0.3s, transform 0.25s, box-shadow 0.3s;
+  padding: 2rem;
+  transition: border-color 0.3s, transform 0.25s, box-shadow 0.3s;
   cursor: pointer;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(1,31,69,.06);
 }
 .product-card:hover {
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(74,179,212,0.35);
+  border-color: var(--teal);
+  border-left-color: var(--teal);
   transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  box-shadow: 0 16px 48px rgba(1,31,69,.1);
+}
+.product-card.featured {
+  border-left-color: var(--teal);
+  background: linear-gradient(135deg, #edf7fb 0%, #d6edf8 100%);
+  border-color: rgba(10,143,160,.25);
 }
 .product-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: rgba(74,179,212,0.15);
-  border: 1px solid rgba(74,179,212,0.25);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(10,143,160,.08);
+  border: 1px solid rgba(10,143,160,.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.4rem;
 }
-.product-icon svg { width: 26px; height: 26px; color: var(--sky); }
+.product-icon svg { width: 24px; height: 24px; color: var(--teal); }
 .product-tag {
-  font-family: var(--ff-display);
-  font-size: 0.6rem;
+  font-family: var(--ff-body);
+  font-size: 0.58rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--sky);
-  margin-bottom: 0.6rem;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
 }
 .product-name {
   font-family: var(--ff-display);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--navy);
   line-height: 1.2;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.7rem;
   letter-spacing: 0;
 }
 .product-desc {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   line-height: 1.65;
-  color: rgba(255,255,255,0.45);
+  color: var(--mid);
   font-weight: 300;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.4rem;
 }
 .product-specs {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding-top: 1.4rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  gap: 0.45rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--smoke);
 }
 .product-spec {
   display: flex;
@@ -527,51 +523,49 @@ section { padding: 7rem 6vw; }
 }
 .product-spec-key {
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.3);
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  color: var(--steel);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 .product-spec-val {
   font-family: var(--ff-display);
   font-size: 0.75rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.75);
+  color: var(--blue-mid);
 }
 
 /* ── TECHNOLOGY SECTION ── */
-.tech-section { background: var(--white); }
+.tech-section { background: #fff; }
 .tech-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: center;
-  margin-top: 0;
 }
-.tech-visual {
-  position: relative;
-}
+.tech-visual { position: relative; }
 .tech-card-main {
-  background: var(--navy);
+  background: linear-gradient(135deg, var(--light) 0%, var(--light-2) 100%);
   border-radius: 20px;
   padding: 3rem;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(10,143,160,.18);
 }
 .tech-card-main::before {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(74,179,212,.2) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(10,143,160,.18) 0%, transparent 55%);
+    radial-gradient(ellipse 60% 50% at 90% 20%, rgba(255,255,255,.7) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 40% at 10% 80%, rgba(10,143,160,.08) 0%, transparent 50%);
   pointer-events: none;
 }
 .tech-label-small {
-  font-family: var(--ff-display);
-  font-size: 0.62rem;
+  font-family: var(--ff-body);
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--sky);
+  color: var(--teal);
   margin-bottom: 1.2rem;
   position: relative;
   z-index: 1;
@@ -585,33 +579,33 @@ section { padding: 7rem 6vw; }
   font-family: var(--ff-display);
   font-size: 5rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--navy);
   line-height: 1;
   letter-spacing: 0;
 }
-.tech-accuracy-num span { color: var(--sky); }
+.tech-accuracy-num span { color: var(--teal); }
 .tech-accuracy-sub {
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.45);
+  color: var(--mid);
   margin-top: 0.4rem;
   font-weight: 300;
 }
 .tech-bar-wrap {
   position: relative;
   z-index: 1;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.4rem;
 }
 .tech-bar-label {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
   font-size: 0.7rem;
-  color: rgba(255,255,255,0.4);
+  color: var(--steel);
   font-weight: 500;
 }
 .tech-bar-track {
   height: 5px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(1,31,69,.08);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -632,14 +626,14 @@ section { padding: 7rem 6vw; }
 }
 .tech-chip {
   font-family: var(--ff-display);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.06em;
+  color: var(--mid);
   padding: 0.35rem 0.9rem;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(1,31,69,.12);
   border-radius: 100px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,.7);
 }
 
 .tech-float-card {
@@ -650,24 +644,26 @@ section { padding: 7rem 6vw; }
   border-radius: 14px;
   padding: 1.2rem 1.5rem;
   box-shadow:
-    0 4px 24px rgba(1,31,69,0.12),
-    0 1px 4px rgba(1,31,69,0.06);
+    0 4px 24px rgba(1,31,69,0.1),
+    0 1px 4px rgba(1,31,69,0.05);
   display: flex;
   align-items: center;
   gap: 0.9rem;
   min-width: 200px;
+  border: 1px solid var(--smoke);
 }
 .tech-float-icon {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--light);
+  background: rgba(10,143,160,.08);
+  border: 1px solid rgba(10,143,160,.18);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-.tech-float-icon svg { width: 20px; height: 20px; color: var(--blue); }
+.tech-float-icon svg { width: 20px; height: 20px; color: var(--teal); }
 .tech-float-text {}
 .tech-float-val {
   font-family: var(--ff-display);
@@ -680,7 +676,7 @@ section { padding: 7rem 6vw; }
   font-size: 0.68rem;
   color: var(--steel);
   margin-top: 0.1rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .tech-content {}
@@ -688,44 +684,48 @@ section { padding: 7rem 6vw; }
   margin-top: 2.8rem;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.2rem;
 }
 .tech-feature {
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;
-  padding: 1.5rem;
-  border-radius: 14px;
-  background: var(--white);
+  padding: 1.4rem;
+  border-radius: 12px;
+  background: #fff;
   border: 1px solid var(--smoke);
+  border-left: 3px solid var(--sky);
+  box-shadow: 0 2px 10px rgba(1,31,69,.05);
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .tech-feature:hover {
-  border-color: rgba(2,79,152,0.2);
-  box-shadow: 0 8px 32px rgba(1,31,69,0.06);
+  border-color: var(--teal);
+  border-left-color: var(--teal);
+  box-shadow: 0 8px 28px rgba(1,31,69,.08);
   transform: translateX(4px);
 }
 .tech-feature-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--light);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(10,143,160,.08);
+  border: 1px solid rgba(10,143,160,.15);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-.tech-feature-icon svg { width: 22px; height: 22px; color: var(--blue); }
+.tech-feature-icon svg { width: 20px; height: 20px; color: var(--teal); }
 .tech-feature-body {}
 .tech-feature-title {
   font-family: var(--ff-display);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
 .tech-feature-desc {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--mid);
   line-height: 1.65;
   font-weight: 300;
@@ -733,7 +733,7 @@ section { padding: 7rem 6vw; }
 
 /* ── CERTIFICATIONS ── */
 .cert-section {
-  background: var(--light);
+  background: linear-gradient(160deg, #e8f5fb 0%, #d4ecf7 60%, #c0e1f1 100%);
   position: relative;
   overflow: hidden;
 }
@@ -745,7 +745,7 @@ section { padding: 7rem 6vw; }
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(2,79,152,.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(74,179,212,.08) 0%, transparent 70%);
   pointer-events: none;
 }
 .cert-header {
@@ -766,24 +766,28 @@ section { padding: 7rem 6vw; }
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-shadow: 0 2px 12px rgba(1,31,69,.06);
 }
 .cert-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(1,31,69,0.1);
+  box-shadow: 0 16px 48px rgba(1,31,69,.1);
 }
 .cert-badge {
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: var(--light);
+  background: rgba(10,143,160,.08);
+  border: 1px solid rgba(10,143,160,.2);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--ff-display);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  color: var(--blue);
+  color: var(--teal);
   letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1.3;
 }
 .cert-name {
   font-family: var(--ff-display);
@@ -803,7 +807,7 @@ section { padding: 7rem 6vw; }
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -818,7 +822,7 @@ section { padding: 7rem 6vw; }
 }
 
 /* ── INDUSTRIES ── */
-.industries-section { background: var(--white); }
+.industries-section { background: var(--light); }
 .industries-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -826,75 +830,58 @@ section { padding: 7rem 6vw; }
   margin-top: 3.5rem;
 }
 .industry-card {
+  background: #fff;
   border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  height: 280px;
+  border: 1px solid var(--smoke);
+  border-top: 3px solid var(--sky);
+  padding: 2rem 1.8rem;
+  box-shadow: 0 2px 12px rgba(1,31,69,.06);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.2s;
   cursor: pointer;
 }
-.industry-bg {
-  position: absolute; inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.4s;
+.industry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(1,31,69,.1);
+  border-color: var(--teal);
+  border-top-color: var(--teal);
 }
-.industry-card:hover .industry-bg { transform: scale(1.04); }
-.industry-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(1,31,69,0.85) 0%, rgba(1,31,69,0.3) 60%, transparent 100%);
-  transition: background 0.3s;
-}
-.industry-card:hover .industry-overlay {
-  background: linear-gradient(0deg, rgba(1,31,69,0.9) 0%, rgba(1,31,69,0.5) 60%, rgba(2,79,152,0.15) 100%);
-}
-.industry-content {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 1.8rem;
-}
+.ind-2 { border-top-color: var(--teal); }
+.ind-3 { border-top-color: var(--blue-mid); }
+.ind-4 { border-top-color: var(--blue); }
 .industry-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(10,143,160,.08);
+  border: 1px solid rgba(10,143,160,.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.2rem;
 }
-.industry-icon svg { width: 20px; height: 20px; color: var(--sky); }
+.industry-icon svg { width: 22px; height: 22px; color: var(--teal); }
+.ind-3 .industry-icon { background: rgba(26,107,191,.08); border-color: rgba(26,107,191,.2); }
+.ind-3 .industry-icon svg { color: var(--blue-mid); }
+.ind-4 .industry-icon { background: rgba(2,79,152,.08); border-color: rgba(2,79,152,.2); }
+.ind-4 .industry-icon svg { color: var(--blue); }
 .industry-name {
   font-family: var(--ff-display);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.4rem;
+  color: var(--navy);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0;
 }
 .industry-sub {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.84rem;
+  color: var(--mid);
   font-weight: 300;
-  line-height: 1.5;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s, opacity 0.3s;
-  opacity: 0;
+  line-height: 1.65;
 }
-.industry-card:hover .industry-sub {
-  max-height: 60px;
-  opacity: 1;
-}
-
-/* industry color overlays */
-.ind-1 .industry-bg { background: linear-gradient(135deg, #0a2a4a, #024f98); }
-.ind-2 .industry-bg { background: linear-gradient(135deg, #0a3a2a, #0a8fa0); }
-.ind-3 .industry-bg { background: linear-gradient(135deg, #2a0a1a, #6b1a4a); }
-.ind-4 .industry-bg { background: linear-gradient(135deg, #1a2a0a, #3a5a1a); }
 
 /* ── CTA SECTION ── */
 .cta-section {
-  background: var(--navy);
+  background: linear-gradient(135deg, var(--light) 0%, var(--light-2) 60%, rgba(74,179,212,.18) 100%);
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -903,18 +890,17 @@ section { padding: 7rem 6vw; }
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 70% 80% at 50% 50%, rgba(2,79,152,.4) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 40% at 15% 20%, rgba(10,143,160,.2) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 70% at 50% 50%, rgba(255,255,255,.5) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 40% at 15% 20%, rgba(10,143,160,.1) 0%, transparent 55%),
     radial-gradient(ellipse 30% 30% at 85% 80%, rgba(74,179,212,.12) 0%, transparent 50%);
   pointer-events: none;
 }
-.cta-section .section-label {
-  color: var(--sky);
-  border-color: rgba(74,179,212,.3);
-  background: rgba(74,179,212,.08);
+.cta-section .section-tag {
+  color: var(--teal);
+  border-color: rgba(10,143,160,.3);
+  background: rgba(10,143,160,.06);
   margin-bottom: 1.5rem;
 }
-.cta-section .section-label::before { background: var(--sky); }
 .cta-content {
   position: relative;
   z-index: 2;
@@ -923,17 +909,17 @@ section { padding: 7rem 6vw; }
 }
 .cta-title {
   font-family: var(--ff-display);
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
   font-weight: 800;
-  color: #fff;
+  color: var(--navy);
   line-height: 1.05;
   letter-spacing: 0;
   margin-bottom: 1.2rem;
 }
-.cta-title span { color: var(--sky); }
+.cta-title span { color: var(--teal); }
 .cta-sub {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.45);
+  font-size: 1rem;
+  color: var(--mid);
   line-height: 1.75;
   font-weight: 300;
   margin-bottom: 2.8rem;
@@ -947,7 +933,7 @@ section { padding: 7rem 6vw; }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--ink);
+  background: var(--navy);
   padding: 5rem 6vw 3rem;
 }
 .footer-grid {
@@ -961,8 +947,8 @@ footer {
 .footer-logo { margin-bottom: 1.4rem; }
 .footer-logo img { height: 32px; width: auto; }
 .footer-tagline {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.35);
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.38);
   line-height: 1.7;
   font-weight: 300;
   max-width: 280px;
@@ -981,25 +967,25 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.38);
   text-decoration: none;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .footer-social:hover {
-  background: rgba(74,179,212,0.15);
+  background: rgba(10,143,160,0.2);
   color: var(--sky);
-  border-color: rgba(74,179,212,0.3);
+  border-color: rgba(10,143,160,0.35);
 }
 .footer-social svg { width: 16px; height: 16px; }
 
 .footer-col {}
 .footer-col-title {
   font-family: var(--ff-display);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.28);
   margin-bottom: 1.4rem;
 }
 .footer-links {
@@ -1009,8 +995,8 @@ footer {
   gap: 0.75rem;
 }
 .footer-links a {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.5);
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.45);
   text-decoration: none;
   font-weight: 300;
   transition: color 0.2s;
@@ -1026,8 +1012,8 @@ footer {
   gap: 1rem;
 }
 .footer-copy {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.22);
   font-weight: 300;
 }
 .footer-legal {
@@ -1035,8 +1021,8 @@ footer {
   gap: 2rem;
 }
 .footer-legal a {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.22);
   text-decoration: none;
   font-weight: 300;
   transition: color 0.2s;
@@ -1086,18 +1072,17 @@ footer {
 <section class="hero" id="home">
   <div class="hero-mesh"></div>
   <div class="hero-grid"></div>
-  <div class="hero-noise"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">ISO 13485 Sertifikalı Üretici</div>
+    <div class="hero-eyebrow">Yerli Üretici</div>
     <h1 class="hero-title">
       <span class="accent">Hızlı</span><br>
-      İlaç Maddeleri <br> Test Kitleri
+      Madde<br><span class="line2">Test Kitleri</span>
     </h1>
     <p class="hero-sub">
-      Sağlık profesyonelleri, laboratuvarlar ve kolluk kuvvetleri tarafından tercih edilen hızlı ve güvenilir in vitro madde tespit test çözümleri.
-    </p>
+      Laboratuvar, iş yeri ve bireysel kullanım için tasarlanmış; dakikalar içinde güvenilir sonuç veren uyuşturucu madde tarama çözümleri.
+      </p>
     <div class="hero-actions">
-      <a href="#products" class="btn-hero-primary">Ürünleri Keşfedin</a>
+      <a href="#products" class="btn-hero-primary">Ürünleri İnceleyin</a>
       <a href="contact.html" class="btn-hero-outline">Katalog İsteyin</a>
     </div>
     <div class="hero-stats">
@@ -1107,11 +1092,11 @@ footer {
       </div>
       <div class="hero-stat">
         <div class="hero-stat-value">%99<span>,9</span></div>
-        <div class="hero-stat-label">Test Doğruluğu</div>
+        <div class="hero-stat-label">Doğruluk Oranı</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-value">200<span>+</span></div>
-        <div class="hero-stat-label">Ürün Çeşitleri</div>
+        <div class="hero-stat-label">Ürün Çeşidi</div>
       </div>
     </div>
   </div>
@@ -1142,6 +1127,28 @@ footer {
       <span>Hasta Başı Testi</span>
       <span class="ticker-dot">◆</span>
       <span>İşyeri Taraması</span>
+      <span class="ticker-dot">◆</span>
+      <span>İlaç Madde Test Kitleri</span>
+      <span class="ticker-dot">◆</span>
+      <span>Çok Panelli Testler</span>
+      <span class="ticker-dot">◆</span>
+      <span>Tekli Panel Testleri</span>
+      <span class="ticker-dot">◆</span>
+      <span>İdrar Testi</span>
+      <span class="ticker-dot">◆</span>
+      <span>Ağız Sıvısı Testi</span>
+      <span class="ticker-dot">◆</span>
+      <span>Katı Madde Testi</span>
+      <span class="ticker-dot">◆</span>
+      <span>CE Sertifikalı</span>
+      <span class="ticker-dot">◆</span>
+      <span>ISO 13485</span>
+      <span class="ticker-dot">◆</span>
+      <span>Hızlı Sonuçlar</span>
+      <span class="ticker-dot">◆</span>
+      <span>Hasta Başı Testi</span>
+      <span class="ticker-dot">◆</span>
+      <span>İşyeri Taraması</span>
     </div>
   </div>
 </section>
@@ -1150,61 +1157,60 @@ footer {
 <div class="trust-strip">
   <div class="trust-item">
     <div class="trust-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#024f98">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#0a8fa0">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
       </svg>
     </div>
     <div class="trust-text">
       <div class="trust-title">CE Sertifikalı</div>
-      <div class="trust-sub">AB Tıbbi Cihaz Direktifi</div>
+      <div class="trust-sub">AB Yönetmeliğine uyumlu</div>
     </div>
   </div>
   <div class="trust-divider"></div>
   <div class="trust-item">
     <div class="trust-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#024f98">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#0a8fa0">
         <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/>
       </svg>
     </div>
     <div class="trust-text">
       <div class="trust-title">ISO 13485</div>
-      <div class="trust-sub">Kalite Yönetim Sistemi</div>
+      <div class="trust-sub">Kalite yönetim sistemi</div>
     </div>
   </div>
   <div class="trust-divider"></div>
   <div class="trust-item">
     <div class="trust-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#024f98">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.97zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.97z"/>
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#0a8fa0">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
       </svg>
     </div>
     <div class="trust-text">
-      <div class="trust-title">%99,9 Doğruluk</div>
-      <div class="trust-sub">Klinik olarak doğrulanmış sonuçlar</div>
+      <div class="trust-title">%99,9 Doğruluk Oranı</div>
+      <div class="trust-sub">Klinik doğrulanmış performans</div>
     </div>
   </div>
   <div class="trust-divider"></div>
   <div class="trust-item">
     <div class="trust-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#024f98">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#0a8fa0">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
     </div>
     <div class="trust-text">
-      <div class="trust-title">Dakikalar içinde Sonuç</div>
-      <div class="trust-sub">Hızlı hasta başı testi</div>
+      <div class="trust-title">Dakikalar İçinde Sonuç</div>
+      <div class="trust-sub">Ek ekipman gerektirmez</div>
     </div>
   </div>
-
 </div>
 
 <!-- PRODUCTS -->
 <section class="products-section" id="products">
   <div class="products-header">
     <div>
-      <div class="section-label">Ürün Yelpazesi</div>
-      <h2 class="section-title">Kapsamlı Tanısal<br>Test Çözümleri</h2>
-      <p class="section-desc">Tek panelli şeritlerden çok maddeli kitlere kadar her format, herhangi bir profesyonel ortamda hassasiyet, hız ve kullanım kolaylığı için tasarlanmıştır.</p>
+      <div class="section-tag teal">Ürün Yelpazesi</div>
+      <h2 class="section-title">İhtiyacınıza Uygun<br>Her Format, Her Numune</h2>
+      <p class="section-desc">İdrar, ağız sıvısı ve katı madde numunelerinde kapsamlı tarama imkanı. Tek panelden 16 panele kadar geniş seçenek yelpazesiyle her kullanım alanına uygun çözümler sunuyoruz.</p>
     </div>
     <a href="contact.html" class="btn-hero-outline" style="flex-shrink:0;">Tam Kataloğu Görüntüle →</a>
   </div>
@@ -1216,21 +1222,13 @@ footer {
           <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"/>
         </svg>
       </div>
-      <div class="product-tag">İdrar Taraması</div>
-      <div class="product-name">İlaç Test Kitleri</div>
-      <div class="product-desc">Hızlı idrar ilaç taraması için tek ve çok panelli immünoassay test kitleri. Kompakt, taşınabilir ve oda sıcaklığında stabildir.</div>
+      <div class="product-tag">Çoklu Tarama</div>
+      <div class="product-name">Çok Panelli Test Kitleri</div>
+      <div class="product-desc">Tek bir numuneden aynı anda birden fazla maddeyi eş zamanlı olarak tespit eder. Geniş kapsamlı tarama imkanı sunar.</div>
       <div class="product-specs">
         <div class="product-spec">
-          <span class="product-spec-key">Panel Seçenekleri</span>
-          <span class="product-spec-val">1 – 16 Panel</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Sonuç Süresi</span>
-          <span class="product-spec-val">3 – 5 Dakika</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Raf Ömrü</span>
-          <span class="product-spec-val">24 Ay</span>
+          <span class="product-spec-key">Numune Tipi</span>
+          <span class="product-spec-val">İdrar / Ağız Sıvısı / Yüzey</span>
         </div>
       </div>
     </div>
@@ -1241,21 +1239,13 @@ footer {
           <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
         </svg>
       </div>
-      <div class="product-tag">Hepsi Bir Arada</div>
-      <div class="product-name">İlaç Test Kitleri</div>
-      <div class="product-desc">Dahili numune sabotaj tespiti kontrolleri ile entegre toplama ve test kitleri. Kurcalamaya dayanıklı, hijyenik ve dakikalar içinde sonuç hazır.</div>
+      <div class="product-tag">İdrar Numune Saflık</div>
+      <div class="product-name">Numune Saflık Testi</div>
+      <div class="product-desc">Toplanan numunenin seyreltilmemiş, katkısız ve manipüle edilmemiş olduğunu doğrular. Tarama sonuçlarının geçerliliğini ve güvenilirliğini güvence altına alır.</div>
       <div class="product-specs">
         <div class="product-spec">
-          <span class="product-spec-key">Panel Seçenekleri</span>
-          <span class="product-spec-val">5 – 14 Panel</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Sonuç Süresi</span>
-          <span class="product-spec-val">5 Dakika</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Numune Sabotaj Tespiti</span>
-          <span class="product-spec-val">Dahil</span>
+          <span class="product-spec-key">Numune Tipi</span>
+          <span class="product-spec-val">İdrar</span>
         </div>
       </div>
     </div>
@@ -1266,21 +1256,31 @@ footer {
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"/>
         </svg>
       </div>
-      <div class="product-tag">Strip Format</div>
-      <div class="product-name">İlaç Test Şeritleri</div>
-      <div class="product-desc">Bireysel ilaç maddesi analiti tespiti için yüksek duyarlılıklı daldır-oku (dip-stick) immünoassay şeritleri. Laboratuvar doğrulama iş akışları için idealdir.</div>
+      <div class="product-tag">Tekli Tarama</div>
+      <div class="product-name">Tekli Panel Test Şeritleri</div>
+      <div class="product-desc">Sadece belirli bir madde veya madde grubunu test etmek için ideal ve ekonomik çözümdür.</div>
       <div class="product-specs">
         <div class="product-spec">
-          <span class="product-spec-key">Format</span>
-          <span class="product-spec-val">Tek Analit</span>
+          <span class="product-spec-key">Numune Tipi</span>
+          <span class="product-spec-val">İdrar / Ağız Sıvısı</span>
         </div>
+      </div>
+    </div>
+
+
+    <div class="product-card">
+      <div class="product-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/>
+        </svg>
+      </div>
+      <div class="product-tag">İdrar Numunesi</div>
+      <div class="product-name">İdrar Test Kitleri</div>
+      <div class="product-desc">İdrar numunesi üzerinden gerçekleştirilen taramada en yaygın kullanılan ve en geniş parametre desteği sunan formattır.</div>
+      <div class="product-specs">
         <div class="product-spec">
-          <span class="product-spec-key">Duyarlılık</span>
-          <span class="product-spec-val">SAMHSA Kesim Değerleri</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Sonuç Süresi</span>
-          <span class="product-spec-val">5 Dakika</span>
+          <span class="product-spec-key">Numune Tipi</span>
+          <span class="product-spec-val">İdrar</span>
         </div>
       </div>
     </div>
@@ -1291,21 +1291,13 @@ footer {
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7a9.013 9.013 0 01-5.445-5.445"/>
         </svg>
       </div>
-      <div class="product-tag">Oral Sıvı</div>
+      <div class="product-tag">Ağız Sıvısı</div>
       <div class="product-name">Tükürük Test Kitleri</div>
-      <div class="product-desc">Yol kenarı, işyeri ve hasta başı tarama için invaziv olmayan oral sıvı ilaç testleri. Uzman ekipmana gerek yoktur.</div>
+      <div class="product-desc">Ağız sıvısından doğrudan numune alınır; invaziv işlem gerektirmez. Saha denetimlerinden klinik ortamlara kadar hızlı ve hijyenik uygulama imkanı sunar.</div>
       <div class="product-specs">
         <div class="product-spec">
-          <span class="product-spec-key">Numune</span>
-          <span class="product-spec-val">Oral Sıvı</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Panel Seçenekleri</span>
-          <span class="product-spec-val">10 İlaca Kadar</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Tespit Penceresi</span>
-          <span class="product-spec-val">24 Saate Kadar</span>
+          <span class="product-spec-key">Numune Tipi</span>
+          <span class="product-spec-val">Ağız Sıvısı</span>
         </div>
       </div>
     </div>
@@ -1313,49 +1305,33 @@ footer {
     <div class="product-card">
       <div class="product-icon">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7a9.013 9.013 0 01-5.445-5.445"/>
         </svg>
       </div>
-      <div class="product-tag">Dijital</div>
-      <div class="product-name">Okuyucu Cihazları</div>
-      <div class="product-desc">Nesnel sonuç yorumu için otomatik lateral akış okuyucuları. Dijital kayıt entegrasyonu ile insan öznelliğini ortadan kaldırır.</div>
+      <div class="product-tag">Yüzey - Madde</div>
+      <div class="product-name">Yüzey / Katı Madde Test Kitleri</div>
+      <div class="product-desc">Yüzey sürüntüsü veya katı madde numunesi üzerinden madde tespiti yapmanıza imkan tanır.</div>
       <div class="product-specs">
         <div class="product-spec">
-          <span class="product-spec-key">Arayüz</span>
-          <span class="product-spec-val">USB / Bluetooth</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Bağlantı</span>
-          <span class="product-spec-val">LIS / LIMS</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Bellek</span>
-          <span class="product-spec-val">10.000 Kayıt</span>
+          <span class="product-spec-key">Numune Tipi</span>
+          <span class="product-spec-val">Yüzey / Katı Madde</span>
         </div>
       </div>
     </div>
 
-    <div class="product-card" style="background: rgba(74,179,212,0.08); border-color: rgba(74,179,212,0.25);">
-      <div class="product-icon" style="background: rgba(74,179,212,0.15); border-color: rgba(74,179,212,0.3);">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#4ab3d4">
+    <div class="product-card featured">
+      <div class="product-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/>
         </svg>
       </div>
-      <div class="product-tag" style="color:var(--sky)">Özel Üretim</div>
-      <div class="product-name" style="color:#fff">Esnek Panel Konfigürasyonu</div>
-      <div class="product-desc" style="color:rgba(255,255,255,0.45)">Müşteri gereksinimlerine göre tasarlanan özel panel konfigürasyonları. Analit seçimi, panel genişliği ve kesim değerleri talebe göre belirlenir.</div>
-      <div class="product-specs" style="border-top-color:rgba(255,255,255,0.08)">
-        <div class="product-spec">
-          <span class="product-spec-key">Panel Genişliği</span>
-          <span class="product-spec-val">1 – 16 Analit</span>
-        </div>
+      <div class="product-tag">Kendin Tasarla</div>
+      <div class="product-name">Özel Panel Konfigürasyonu</div>
+      <div class="product-desc">Hangi maddeleri tarayacağınıza siz karar verin. Madde seçimi, panel genişliği ve numune tipi kurumunuzun ihtiyacına göre yapılandırılır.</div>
+      <div class="product-specs">
         <div class="product-spec">
           <span class="product-spec-key">Numune Tipi</span>
-          <span class="product-spec-val">İdrar / Oral Sıvı</span>
-        </div>
-        <div class="product-spec">
-          <span class="product-spec-key">Kesim Değeri</span>
-          <span class="product-spec-val">Talebe Göre</span>
+          <span class="product-spec-val">İdrar / Ağız Sıvısı / Yüzey</span>
         </div>
       </div>
     </div>
@@ -1368,27 +1344,27 @@ footer {
   <div class="tech-grid">
     <div class="tech-visual">
       <div class="tech-card-main">
-        <div class="tech-label-small">Performans Metrikleri</div>
+        <div class="tech-label-small">Klinik Performans</div>
         <div class="tech-accuracy">
           <div class="tech-accuracy-num">%99<span>,9</span></div>
-          <div class="tech-accuracy-sub">Klinik duyarlılık &amp; özgüllük</div>
+          <div class="tech-accuracy-sub">Doğruluk oranı</div>
         </div>
         <div class="tech-bar-wrap">
-          <div class="tech-bar-label"><span>Duyarlılık</span><span>%99,9</span></div>
-          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:99.9%"></div></div>
-        </div>
-        <div class="tech-bar-wrap">
-          <div class="tech-bar-label"><span>Özgüllük</span><span>%99,7</span></div>
+          <div class="tech-bar-label"><span>Klinik Hassasiyet</span><span>%99,7</span></div>
           <div class="tech-bar-track"><div class="tech-bar-fill" style="width:99.7%"></div></div>
         </div>
         <div class="tech-bar-wrap">
-          <div class="tech-bar-label"><span>Tekrarlanabilirlik (CV)</span><span>%99,5</span></div>
+          <div class="tech-bar-label"><span>Özgül Seçicilik</span><span>%99,5</span></div>
           <div class="tech-bar-track"><div class="tech-bar-fill" style="width:99.5%"></div></div>
         </div>
+        <div class="tech-bar-wrap">
+          <div class="tech-bar-label"><span>Doğruluk Oranı</span><span>%99,6</span></div>
+          <div class="tech-bar-track"><div class="tech-bar-fill" style="width:99.6%"></div></div>
+        </div>
         <div class="tech-chips">
-          <span class="tech-chip">Lateral Akış İmmünoassayı</span>
-          <span class="tech-chip">Monoklonal Antikorlar</span>
-          <span class="tech-chip">Ekipman Gerekmez</span>
+          <span class="tech-chip">Hızlı Sonuç</span>
+          <span class="tech-chip">Kolay Kullanım</span>
+          <span class="tech-chip">Güvenilir Sonuç</span>
         </div>
       </div>
       <div class="tech-float-card">
@@ -1404,21 +1380,10 @@ footer {
       </div>
     </div>
     <div class="tech-content">
-      <div class="section-label">Teknoloji</div>
-      <h2 class="section-title">Hasta Başı Testlerde Laboratuvar Hassasiyeti</h2>
-      <p class="section-desc">Tescilli lateral akış immünoassay platformumuz, monoklonal antikor özgüllüğünü kolaylaştırılmış kullanıcı deneyimiyle birleştirerek — laboratuvar altyapısı olmadan laboratuvar kalitesinde sonuçlar sunar.</p>
+      <div class="section-tag">Neden CROM TEST?</div>
+      <h2 class="section-title">Güvenliğinizi<br><em>Artırın</em></h2>
+      <p class="section-desc">CROM TEST, laboratuvar, iş yeri ve bireysel kullanım için tasarlanmış yerli üretim bir uyuşturucu madde tarama markasıdır. Riskleri erken aşamada tespit ederek karar alma süreçlerinizi hızlandırır.</p>
       <div class="tech-features">
-        <div class="tech-feature">
-          <div class="tech-feature-icon">
-            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
-            </svg>
-          </div>
-          <div class="tech-feature-body">
-            <div class="tech-feature-title">İmmünoassay Teknolojisi</div>
-            <div class="tech-feature-desc">Uluslararası kabul görmüş kesim seviyelerine (SAMHSA / EMCDDA) kalibre edilmiş yüksek spesifik monoklonal antikorlar kullanan kompetitif (rekabetçi bağlanma esaslı) lateral akış testleri.</div>
-          </div>
-        </div>
         <div class="tech-feature">
           <div class="tech-feature-icon">
             <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
@@ -1426,19 +1391,30 @@ footer {
             </svg>
           </div>
           <div class="tech-feature-body">
-            <div class="tech-feature-title">Cihaz Gerektirmeyen Hızlı Sonuçlar</div>
-            <div class="tech-feature-desc">Sonuçlar 3–5 dakika içinde çıplak gözle görülebilir. Okuyucu, reaktif, kalibrasyon gerekmez — herhangi bir ortamda her eğitimli profesyonele uygundur.</div>
+            <div class="tech-feature-title">Hızlı Sonuç</div>
+            <div class="tech-feature-desc">Dakikalar içinde sonuç verir ve zaman kaybını önler; operasyonel süreçlerinizi kesintisiz sürdürürken güvenliği artırır.</div>
           </div>
         </div>
         <div class="tech-feature">
           <div class="tech-feature-icon">
             <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
             </svg>
           </div>
           <div class="tech-feature-body">
-            <div class="tech-feature-title">Kontrollü Kesim Değeri Kalibrasyonu</div>
-            <div class="tech-feature-desc">Her lot, tüm üretim partilerinde kesim konsantrasyonlarının ±%10 tolerans sınırları içinde kalmasını sağlamak için referans standartlara göre üretilir ve doğrulanır.</div>
+            <div class="tech-feature-title">Kolay Kullanım</div>
+            <div class="tech-feature-desc">Ek ekipman veya ileri teknik bilgi gerektirmez. Farklı numune tiplerine uygun pratik yapısıyla her ortamda kolayca uygulanır.</div>
+          </div>
+        </div>
+        <div class="tech-feature">
+          <div class="tech-feature-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+            </svg>
+          </div>
+          <div class="tech-feature-body">
+            <div class="tech-feature-title">Güvenilir Sonuç</div>
+            <div class="tech-feature-desc">%99,9 doğruluk oranıyla klinik olarak doğrulanmış sonuçlar sunar. Uluslararası referans standartlarına tam uyumlu, güvenilir ve tekrarlanabilir ölçüm performansı sağlar..</div>
           </div>
         </div>
       </div>
@@ -1449,33 +1425,33 @@ footer {
 <!-- CERTIFICATIONS -->
 <section class="cert-section" id="certifications">
   <div class="cert-header">
-    <div class="section-label">Kalite &amp; Uyum</div>
-    <h2 class="section-title">En Yüksek Standartlarda<br>Sertifikalı</h2>
-    <p class="section-desc">Her CROM TEST ürünü, ISO 13485 sertifikalı bir tesiste üretilmekte ve uluslararası düzenleyici çerçevelere uygundur; böylece her sonuca tam güvenle bakabilirsiniz.</p>
+    <div class="section-tag">Kalite &amp; Güvenilirlik</div>
+    <h2 class="section-title">Uluslararası Standartlarda<br><em>Dayalı Üretim</em></h2>
+    <p class="section-desc">Her CROM TEST ürünü, uluslararası kalite güvence çerçevelerine uygun sertifikalı tesislerimizde üretilir ve denetlenir.</p>
   </div>
   <div class="cert-grid">
     <div class="cert-card">
       <div class="cert-badge">ISO<br>13485</div>
       <div class="cert-name">ISO 13485</div>
-      <div class="cert-desc">Tutarlı tasarım, geliştirme ve üretim süreçlerini güvence altına alan tıbbi cihaz kalite yönetim sistemi sertifikasıdır.</div>
+      <div class="cert-desc">Tıbbi cihaz kalite yönetiminin en üst standardı olan ISO 13485 kapsamında tasarlanmış, geliştirilmiş ve üretilmiştir.</div>
       <div class="cert-status">Aktif Sertifika</div>
     </div>
     <div class="cert-card">
       <div class="cert-badge">CE<br>IVD</div>
       <div class="cert-name">CE İşareti</div>
-      <div class="cert-desc">AB Yönetmeliği 2017/746 (IVDR) uyumunu onaylayan, in vitro tanı cihazları için Avrupa uygunluk işaretidir.</div>
+      <div class="cert-desc">Avrupa Birliği'nin en güncel IVD yönetmeliği olan IVDR 2017/746 uyumludur.</div>
       <div class="cert-status">AB Uyumlu</div>
     </div>
     <div class="cert-card">
       <div class="cert-badge">WHO<br>GMP</div>
       <div class="cert-name">WHO GMP</div>
-      <div class="cert-desc">Ham maddelerden nihai ürün serbest bırakımına kadar tüm üretim yaşam döngüsünde uygulanan İyi Üretim Uygulamaları kılavuzlarıdır.</div>
+      <div class="cert-desc">Dünya Sağlık Örgütü'nün İyi Üretim Uygulamaları standartlarına tam uyumlu olarak üretilmiştir.</div>
       <div class="cert-status">Tam Uyumlu</div>
     </div>
     <div class="cert-card">
       <div class="cert-badge">ISO<br>9001</div>
       <div class="cert-name">ISO 9001:2015</div>
-      <div class="cert-desc">Kuruluş genelinde tutarlılık ve sürekli iyileştirmeyi sağlamak için tüm operasyonel süreçlere uygulanan kapsamlı kalite yönetim standardıdır.</div>
+      <div class="cert-desc">Tüm operasyonel süreçlerde tutarlılık ve sürekli iyileştirme ilkesiyle ISO 9001:2015 kapsamında yönetilmektedir.</div>
       <div class="cert-status">Aktif Sertifika</div>
     </div>
   </div>
@@ -1483,79 +1459,45 @@ footer {
 
 <!-- INDUSTRIES -->
 <section class="industries-section" id="industries">
-  <div class="section-label">Hizmet Verilen Sektörler</div>
-  <h2 class="section-title">Kritik Sektörlerde<br>Güvenilir</h2>
-  <p class="section-desc">Klinik ortamlardan işyeri programlarına kadar — CROM TEST kitleri, doğru ve hızlı ilaç maddesi taramasının vazgeçilmez olduğu her yerde kullanılmaktadır.</p>
+  <div class="section-tag">İhtiyaç Duyduğunuz Her Yerde</div>
+  <h2 class="section-title">İhtiyaç Duyduğunuz<br><em>Her Sektörde</em></h2>
+  <p class="section-desc">CROM TEST, laboratuvar koşullarından saha uygulamalarına, iş yeri programlarından klinik ortamlara, bireysel ve ev kullanımına kadar uyuşturucu madde taraması gerektiren her alanda güvenle kullanılmaktadır.</p>
   <div class="industries-grid">
     <div class="industry-card ind-1">
-      <div class="industry-bg">
-        <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5">
-          <path d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-          <circle cx="12" cy="12" r="10"/>
+      <div class="industry-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
         </svg>
       </div>
-      <div class="industry-overlay"></div>
-      <div class="industry-content">
-        <div class="industry-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
-          </svg>
-        </div>
-        <div class="industry-name">İşyeri Testi</div>
-        <div class="industry-sub">İşe alım öncesi, rastgele ve nedenli ilaç maddesi test programları, güvenlik açısından kritik sektörler için.</div>
-      </div>
+      <div class="industry-name">İş Yeri Güvenliği</div>
+      <div class="industry-sub">İşe alım sürecinden rutin periyodik taramalara kadar iş yeri güvenliğini destekler. Çalışma ortamında madde kullanımına karşı etkin önlem.</div>
     </div>
     <div class="industry-card ind-2">
-      <div class="industry-bg">
-        <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5">
-          <path d="M4.5 12.75l6 6 9-13.5"/>
+      <div class="industry-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
         </svg>
       </div>
-      <div class="industry-overlay"></div>
-      <div class="industry-content">
-        <div class="industry-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-          </svg>
-        </div>
-        <div class="industry-name">Klinik &amp; Sağlık</div>
-        <div class="industry-sub">Acil servisler, toksikoloji birimleri ve birinci basamak tarama iş akışları.</div>
-      </div>
+      <div class="industry-name">Klinik &amp; Sağlık</div>
+      <div class="industry-sub">Toksikoloji, acil servis ve poliklinik ortamlarında hızlı tanıyı destekler.</div>
     </div>
     <div class="industry-card ind-3">
-      <div class="industry-bg">
-        <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <div class="industry-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
         </svg>
       </div>
-      <div class="industry-overlay"></div>
-      <div class="industry-content">
-        <div class="industry-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
-          </svg>
-        </div>
-        <div class="industry-name">Kolluk Kuvvetleri</div>
-        <div class="industry-sub">Yol kenarı testleri, gözaltı birimleri ve cezai adalet ilaç maddesi tarama programları.</div>
-      </div>
+      <div class="industry-name">Kolluk Kuvvetleri</div>
+      <div class="industry-sub">Narkotik birimleri, gümrük kapıları ve saha denetimlerinde anlık madde tespiti sağlar.</div>
     </div>
     <div class="industry-card ind-4">
-      <div class="industry-bg">
-        <svg width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5">
-          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-          <path d="M12 8v4l3 3"/>
+      <div class="industry-icon">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
         </svg>
       </div>
-      <div class="industry-overlay"></div>
-      <div class="industry-content">
-        <div class="industry-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
-          </svg>
-        </div>
-        <div class="industry-name">Rehabilitasyon</div>
-        <div class="industry-sub">İyileşme programları, denetimli serbestlik hizmetleri ve tedavi merkezi izleme protokolleri.</div>
-      </div>
+      <div class="industry-name">Rehabilitasyon &amp; Tedavi</div>
+      <div class="industry-sub">İyileşme süreçlerinin takibi, denetimli serbestlik programları ve bağımlılık tedavi merkezlerinde düzenli denetim.</div>
     </div>
   </div>
 </section>
@@ -1563,12 +1505,12 @@ footer {
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="cta-content">
-    <div class="section-label">İletişime Geçin</div>
-    <h2 class="cta-title">CROM TEST ile İş Birliği Yapmaya Hazır mısınız?</h2>
-    <p class="cta-sub">İster klinik bir program için tanı kiti tedarik edin, ister dağıtım ağı kurun, ister teknik destek alın — uzman ekibimiz her adımda yanınızda olacaktır.</p>
+    <div class="section-tag teal">İletişime Geçin</div>
+    <h2 class="cta-title">Senin İhtiyacın,<br><span>Senin Seçimin</span></h2>
+    <p class="cta-sub">Standart paneller her kurumun ihtiyacını karşılamayabilir. Ürün seçimi, özel panel konfigürasyonu veya teknik destek için uzman ekibimizle hemen iletişime geçin — doğru çözümü birlikte belirleyelim.</p>
     <div class="cta-actions">
-      <a href="mailto:destek@cromtest.com" class="btn-hero-primary">Ekibimizle İletişime Geçin</a>
-      <a href="#products" class="btn-hero-outline">Ürünlere Göz At</a>
+      <a href="mailto:info@cromtest.com" class="btn-hero-primary">Bizimle İletişime Geçin</a>
+      <a href="#products" class="btn-hero-outline">Ürünleri İnceleyin</a>
     </div>
   </div>
 </section>
@@ -1581,7 +1523,7 @@ footer {
         <img src="Brand_Guideline/logo_if_color.svg" alt="CROM TEST">
       </div>
       <p class="footer-tagline">
-        CE sertifikalı ilaç maddesi in vitro tanı testi kitlerinin üreticisi ve tedarikçisi. Sağlık profesyonelleri ve kurumları tarafından güvenilmektedir.
+        Laboratuvar, iş yeri ve bireysel kullanım için tasarlanmış; dakikalar içinde güvenilir sonuç veren yerli üretim uyuşturucu madde tarama çözümleri.
       </p>
       <div class="footer-socials">
         <a href="#" class="footer-social" aria-label="LinkedIn">
@@ -1604,12 +1546,13 @@ footer {
     <div class="footer-col">
       <div class="footer-col-title">Ürünler</div>
       <ul class="footer-links">
-        <li><a href="#products">İlaç Test Kitleri</a></li>
-        <li><a href="#products">İlaç Test Kitleri</a></li>
-        <li><a href="#products">İlaç Test Şeritleri</a></li>
+        <li><a href="#products">Çok Panelli Test Kitleri</a></li>
+        <li><a href="#products">Numune Saflık Testi</a></li>
+        <li><a href="#products">Tekli Panel Test Şeritleri</a></li>
         <li><a href="#products">Tükürük Test Kitleri</a></li>
-        <li><a href="#products">Okuyucu Cihazlar</a></li>
-        <li><a href="#products">Esnek Panel Konfigürasyonu</a></li>
+        <li><a href="#products">İdrar Test Kitleri</a></li>
+        <li><a href="#products">Yüzey / Katı Madde Test Kitleri</a></li>
+        <li><a href="#products">Özel Panel Konfigürasyonu</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1626,16 +1569,16 @@ footer {
     <div class="footer-col">
       <div class="footer-col-title">İletişim</div>
       <ul class="footer-links">
-        <li><a href="mailto:destek@cromtest.com">destek@cromtest.com</a></li>
+        <li><a href="mailto:info@cromtest.com">info@cromtest.com</a></li>
+        <li><a href="tel:+903124825451">+90 312 482 5451</a></li>
         <li><a href="contact.html">Teklif Al</a></li>
         <li><a href="contact.html">Katalog İndir</a></li>
         <li><a href="contact.html">Teknik Destek</a></li>
-        <li><a href="contact.html">Dağıtım Sorguları</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2026 CROM TEST. Tüm hakları saklıdır. CE işaretli tıbbi cihazlar.</div>
+    <div class="footer-copy">© 2025 CROM TEST — EGEFE Bilişim Sağlık Sanayi ve Ticaret A.Ş. Tüm hakları saklıdır.</div>
     <div class="footer-legal">
       <a href="contact.html">Gizlilik Politikası</a>
       <a href="contact.html">Kullanım Koşulları</a>
@@ -1645,13 +1588,11 @@ footer {
 </footer>
 
 <script>
-  // Navbar scroll effect
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -1662,7 +1603,6 @@ footer {
     });
   });
 
-  // Intersection Observer for bar animations
   const bars = document.querySelectorAll('.tech-bar-fill');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
