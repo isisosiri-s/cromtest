@@ -12,7 +12,7 @@
   --navy:      #011f45;
   --blue:      #024f98;
   --blue-mid:  #1a6bbf;
-  --teal:      #0a8fa0;
+  --teal:      #1a6bbf;
   --sky:       #4ab3d4;
   --steel:     #6b8fa8;
   --smoke:     #cde5f0;
@@ -105,7 +105,7 @@ body::after {
   color: var(--teal);
   text-decoration: none;
   padding: 0.6rem 1.4rem;
-  border: 1.5px solid rgba(10, 143, 160, 0.35);
+  border: 1.5px solid rgba(26, 107, 191, 0.35);
   border-radius: 6px;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
@@ -131,12 +131,12 @@ body::after {
   background: var(--teal);
   border-radius: 6px;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px rgba(10, 143, 160, 0.28);
+  box-shadow: 0 4px 16px rgba(26, 107, 191, 0.28);
 }
 .btn-primary:hover {
   background: var(--blue);
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(10, 143, 160, 0.38);
+  box-shadow: 0 8px 24px rgba(26, 107, 191, 0.38);
 }
 .btn-primary:active { transform: translateY(0); }
 .btn-primary:focus-visible {
@@ -160,7 +160,7 @@ body::after {
   position: absolute; inset: 0; pointer-events: none;
   background:
     radial-gradient(ellipse 70% 60% at 85% 35%, rgba(255,255,255,.55) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 70% at 15% 75%, rgba(10,143,160,.1) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 70% at 15% 75%, rgba(26,107,191,.1) 0%, transparent 55%),
     radial-gradient(ellipse 35% 35% at 50% 10%, rgba(255,255,255,.4) 0%, transparent 50%);
 }
 .hero-grid {
@@ -244,12 +244,12 @@ body::after {
   border: none;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 6px 24px rgba(10, 143, 160, 0.38);
+  box-shadow: 0 6px 24px rgba(26, 107, 191, 0.38);
 }
 .btn-hero-primary:hover {
   background: var(--blue);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(10, 143, 160, 0.45);
+  box-shadow: 0 12px 32px rgba(26, 107, 191, 0.45);
 }
 .btn-hero-primary:focus-visible {
   outline: 2px solid var(--sky);
@@ -377,8 +377,8 @@ body::after {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(10,143,160,.08);
-  border: 1px solid rgba(10,143,160,.18);
+  background: rgba(26,107,191,.08);
+  border: 1px solid rgba(26,107,191,.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -423,8 +423,8 @@ section { padding: 7rem 6vw; }
 }
 .section-tag.teal {
   color: var(--teal);
-  border-color: rgba(10,143,160,.25);
-  background: rgba(10,143,160,.06);
+  border-color: rgba(26,107,191,.25);
+  background: rgba(26,107,191,.06);
 }
 .section-title {
   font-family: var(--ff-display);
@@ -458,10 +458,10 @@ section { padding: 7rem 6vw; }
   position: absolute; inset: 0;
   background:
     radial-gradient(ellipse 60% 70% at 90% 10%, rgba(255,255,255,.6) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 50% at 5% 90%, rgba(10,143,160,.08) 0%, transparent 55%);
+    radial-gradient(ellipse 40% 50% at 5% 90%, rgba(26,107,191,.08) 0%, transparent 55%);
   pointer-events: none;
 }
-.products-section .section-tag { color: var(--teal); border-color: rgba(10,143,160,.25); background: rgba(10,143,160,.06); }
+.products-section .section-tag { color: var(--teal); border-color: rgba(26,107,191,.25); background: rgba(26,107,191,.06); }
 .products-section .section-title { color: var(--navy); }
 .products-section .section-desc { color: var(--mid); }
 
@@ -501,14 +501,14 @@ section { padding: 7rem 6vw; }
 .product-card.featured {
   border-left-color: var(--teal);
   background: linear-gradient(135deg, #edf7fb 0%, #d6edf8 100%);
-  border-color: rgba(10,143,160,.25);
+  border-color: rgba(26,107,191,.25);
 }
 .product-icon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: rgba(10,143,160,.08);
-  border: 1px solid rgba(10,143,160,.2);
+  background: rgba(26,107,191,.08);
+  border: 1px solid rgba(26,107,191,.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -580,14 +580,14 @@ section { padding: 7rem 6vw; }
   padding: 3rem;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(10,143,160,.18);
+  border: 1px solid rgba(26,107,191,.18);
 }
 .tech-card-main::before {
   content: '';
   position: absolute; inset: 0;
   background:
     radial-gradient(ellipse 60% 50% at 90% 20%, rgba(255,255,255,.7) 0%, transparent 55%),
-    radial-gradient(ellipse 30% 40% at 10% 80%, rgba(10,143,160,.08) 0%, transparent 50%);
+    radial-gradient(ellipse 30% 40% at 10% 80%, rgba(26,107,191,.08) 0%, transparent 50%);
   pointer-events: none;
 }
 .tech-label-small {
@@ -687,8 +687,8 @@ section { padding: 7rem 6vw; }
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(10,143,160,.08);
-  border: 1px solid rgba(10,143,160,.18);
+  background: rgba(26,107,191,.08);
+  border: 1px solid rgba(26,107,191,.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -739,8 +739,8 @@ section { padding: 7rem 6vw; }
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(10,143,160,.08);
-  border: 1px solid rgba(10,143,160,.15);
+  background: rgba(26,107,191,.08);
+  border: 1px solid rgba(26,107,191,.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -807,8 +807,8 @@ section { padding: 7rem 6vw; }
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: rgba(10,143,160,.08);
-  border: 1px solid rgba(10,143,160,.2);
+  background: rgba(26,107,191,.08);
+  border: 1px solid rgba(26,107,191,.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -883,8 +883,8 @@ section { padding: 7rem 6vw; }
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: rgba(10,143,160,.08);
-  border: 1px solid rgba(10,143,160,.2);
+  background: rgba(26,107,191,.08);
+  border: 1px solid rgba(26,107,191,.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -922,14 +922,14 @@ section { padding: 7rem 6vw; }
   position: absolute; inset: 0;
   background:
     radial-gradient(ellipse 60% 70% at 50% 50%, rgba(255,255,255,.5) 0%, transparent 60%),
-    radial-gradient(ellipse 35% 40% at 15% 20%, rgba(10,143,160,.1) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 40% at 15% 20%, rgba(26,107,191,.1) 0%, transparent 55%),
     radial-gradient(ellipse 30% 30% at 85% 80%, rgba(74,179,212,.12) 0%, transparent 50%);
   pointer-events: none;
 }
 .cta-section .section-tag {
   color: var(--teal);
-  border-color: rgba(10,143,160,.3);
-  background: rgba(10,143,160,.06);
+  border-color: rgba(26,107,191,.3);
+  background: rgba(26,107,191,.06);
   margin-bottom: 1.5rem;
 }
 .cta-content {
@@ -965,7 +965,7 @@ section { padding: 7rem 6vw; }
 /* ── FOOTER ── */
 footer {
   background:
-    radial-gradient(ellipse 65% 55% at 8% 100%, rgba(10,143,160,.14) 0%, transparent 58%),
+    radial-gradient(ellipse 65% 55% at 8% 100%, rgba(26,107,191,.14) 0%, transparent 58%),
     radial-gradient(ellipse 55% 65% at 92% 0%, rgba(74,179,212,.09) 0%, transparent 55%),
     radial-gradient(ellipse 45% 40% at 55% 55%, rgba(2,79,152,.10) 0%, transparent 60%),
     linear-gradient(160deg, #011f45 0%, #012a5e 55%, #011f45 100%);
@@ -1008,9 +1008,9 @@ footer {
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .footer-social:hover {
-  background: rgba(10,143,160,0.2);
+  background: rgba(26,107,191,0.2);
   color: var(--sky);
-  border-color: rgba(10,143,160,0.35);
+  border-color: rgba(26,107,191,0.35);
 }
 .footer-social:focus-visible {
   outline: 2px solid var(--sky);
@@ -1200,7 +1200,7 @@ footer {
 <div class="trust-strip">
   <div class="trust-item">
     <div class="trust-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#0a8fa0">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#1a6bbf">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
       </svg>
     </div>
@@ -1212,7 +1212,7 @@ footer {
   <div class="trust-divider"></div>
   <div class="trust-item">
     <div class="trust-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#0a8fa0">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#1a6bbf">
         <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/>
       </svg>
     </div>
@@ -1224,7 +1224,7 @@ footer {
   <div class="trust-divider"></div>
   <div class="trust-item">
     <div class="trust-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#0a8fa0">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#1a6bbf">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
       </svg>
     </div>
@@ -1236,7 +1236,7 @@ footer {
   <div class="trust-divider"></div>
   <div class="trust-item">
     <div class="trust-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#0a8fa0">
+      <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color:#1a6bbf">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
     </div>
