@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gizlilik Politikası — CROM TEST</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,300;1,6..12,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:      #011f45;
+  --blue:      #024f98;
+  --blue-mid:  #1a6bbf;
+  --teal:      #0a8fa0;
+  --sky:       #4ab3d4;
+  --steel:     #6b8fa8;
+  --smoke:     #cde5f0;
+  --white:     #ffffff;
+  --ink:       #0b1c30;
+  --mid:       #3d5a78;
+  --light:     #eaf4f9;
+  --light-2:   #d6edf8;
+  --green:     #1a7a4a;
+  --ff-display: 'Nunito Sans', sans-serif;
+  --ff-body:    'Source Sans 3', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: #e8f4f9;
+  color: var(--ink);
+  font-family: var(--ff-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--light); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 2px; }
+
+/* ── GRAIN TEXTURE (remove these 7 lines to disable) ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(1, 31, 69, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  height: 72px;
+  transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: 0 4px 32px rgba(1, 31, 69, 0.08); }
+.nav-logo img { height: 44px; width: auto; display: block; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--ff-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-links a:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 3px; color: var(--teal); }
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.btn-outline {
+  font-family: var(--ff-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-decoration: none;
+  padding: 0.6rem 1.4rem;
+  border: 1.5px solid rgba(10, 143, 160, 0.35);
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-outline:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+.btn-outline:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+.btn-primary {
+  font-family: var(--ff-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.65rem 1.5rem;
+  background: var(--teal);
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(10, 143, 160, 0.28);
+}
+.btn-primary:hover { background: var(--blue); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(10, 143, 160, 0.38); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 6px; }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: linear-gradient(145deg, #f4faff 0%, #deeef8 40%, #c6e3f4 70%, #a8d4ec 100%);
+  padding: 140px 6vw 90px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-mesh {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 35%, rgba(255,255,255,.55) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 70% at 15% 75%, rgba(10,143,160,.1) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 35% at 50% 10%, rgba(255,255,255,.4) 0%, transparent 50%);
+}
+.page-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(1,31,69,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(1,31,69,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--ff-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.8rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--teal);
+  border-radius: 1px;
+}
+.page-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 1.4rem;
+}
+.page-title .accent { color: var(--teal); }
+.page-sub {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(1,31,69,0.55);
+  font-weight: 300;
+  max-width: 520px;
+}
+
+/* ── POLICY CONTENT ── */
+.policy-section {
+  padding: 5rem 6vw;
+  background: linear-gradient(160deg, #e8f5fb 0%, #d4ecf7 60%, #c0e1f1 100%);
+}
+.policy-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.policy-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(10,143,160,0.15);
+  flex-wrap: wrap;
+}
+.policy-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--ff-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--steel);
+}
+.policy-meta-item svg { width: 14px; height: 14px; color: var(--teal); }
+.policy-meta-badge {
+  font-family: var(--ff-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  background: rgba(10,143,160,0.1);
+  border: 1px solid rgba(10,143,160,0.22);
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+}
+
+.policy-block {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow:
+    0 2px 8px rgba(1,31,69,0.05),
+    0 8px 32px rgba(1,31,69,0.04);
+  border: 1px solid rgba(10,143,160,0.08);
+}
+.policy-block-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.policy-block-num {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(10,143,160,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--teal);
+  flex-shrink: 0;
+}
+.policy-block-title {
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+.policy-block p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--mid);
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.policy-block p:last-child { margin-bottom: 0; }
+.policy-block ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0.8rem 0;
+}
+.policy-block ul li {
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: var(--mid);
+  font-weight: 300;
+  padding-left: 1.4rem;
+  position: relative;
+}
+.policy-block ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  opacity: 0.6;
+}
+.policy-block a {
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.policy-block a:hover { color: var(--navy); }
+.policy-block a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 2px; }
+
+.policy-highlight {
+  background: rgba(10,143,160,0.06);
+  border: 1px solid rgba(10,143,160,0.18);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--mid);
+}
+.policy-highlight strong { color: var(--teal); font-weight: 600; }
+
+.policy-rights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.policy-right-item {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(10,143,160,0.1);
+}
+.policy-right-item-title {
+  font-family: var(--ff-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.policy-right-item p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-bottom: 0 !important;
+}
+
+.policy-contact-box {
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.policy-contact-box-text h3 {
+  font-family: var(--ff-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.policy-contact-box-text p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  margin-bottom: 0 !important;
+}
+.policy-contact-box .btn-teal {
+  font-family: var(--ff-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--teal);
+  border-radius: 8px;
+  padding: 0.75rem 1.6rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(10,143,160,0.35);
+}
+.policy-contact-box .btn-teal:hover { background: var(--sky); transform: translateY(-1px); }
+.policy-contact-box .btn-teal:active { transform: translateY(0); }
+.policy-contact-box .btn-teal:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 8px; }
+
+/* ── FOOTER ── */
+footer {
+  background:
+    radial-gradient(ellipse 65% 55% at 8% 100%, rgba(10,143,160,.14) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 65% at 92% 0%, rgba(74,179,212,.09) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 55% 55%, rgba(2,79,152,.10) 0%, transparent 60%),
+    linear-gradient(160deg, #011f45 0%, #012a5e 55%, #011f45 100%);
+  padding: 5rem 6vw 3rem;
+  position: relative;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-logo { margin-bottom: 1.4rem; }
+.footer-logo img { height: 32px; width: auto; }
+.footer-tagline {
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 280px;
+  margin-bottom: 2rem;
+}
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-social {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.footer-social:hover { background: rgba(10,143,160,0.2); color: var(--sky); border-color: rgba(10,143,160,0.35); }
+.footer-social:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 8px; }
+.footer-social svg { width: 16px; height: 16px; }
+.footer-col-title {
+  font-family: var(--ff-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 1.4rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-links a {
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #fff; }
+.footer-links a:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 3px; color: #fff; }
+.footer-bottom {
+  padding-top: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.22); font-weight: 300; }
+.footer-legal { display: flex; gap: 2rem; }
+.footer-legal a {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.22);
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: rgba(255,255,255,0.6); }
+.footer-legal a:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 3px; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-hero-content .hero-eyebrow { opacity: 0; animation: fadeUp 0.6s 0.2s forwards; }
+.page-hero-content .page-title   { opacity: 0; animation: fadeUp 0.7s 0.35s forwards; }
+.page-hero-content .page-sub     { opacity: 0; animation: fadeUp 0.7s 0.5s forwards; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .policy-rights-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .policy-section { padding: 4rem 5vw; }
+  .policy-block { padding: 1.8rem; }
+  .policy-contact-box { flex-direction: column; align-items: flex-start; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-legal { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="brand_assets/logo_if_white.svg" alt="CROM TEST">
+  </a>
+  <ul class="nav-links">
+    <li><a href="products.html">Ürünler</a></li>
+    <li><a href="index.html#technology">Teknoloji</a></li>
+    <li><a href="index.html#certifications">Sertifikalar</a></li>
+    <li><a href="index.html#industries">Sektörler</a></li>
+    <li><a href="contact.html">İletişim</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="contact.html" class="btn-outline">Katalog İndir</a>
+    <a href="contact.html" class="btn-primary">Teklif Al</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-mesh"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="hero-eyebrow">Yasal</div>
+    <h1 class="page-title">Gizlilik<br><span class="accent">Politikası</span></h1>
+    <p class="page-sub">Kişisel verilerinizi nasıl topladığımızı, işlediğimizi ve koruduğumuzu KVKK kapsamında şeffaf biçimde açıklıyoruz.</p>
+  </div>
+</section>
+
+<!-- POLICY CONTENT -->
+<section class="policy-section">
+  <div class="policy-wrap">
+
+    <!-- Meta -->
+    <div class="policy-meta">
+      <div class="policy-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
+        </svg>
+        Son güncelleme: Mayıs 2025
+      </div>
+      <div class="policy-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3"/>
+        </svg>
+        Yürürlük: Mayıs 2025
+      </div>
+      <span class="policy-meta-badge">KVKK Uyumlu</span>
+      <span class="policy-meta-badge">GDPR Uyumlu</span>
+    </div>
+
+    <!-- 1 -->
+    <div class="policy-block">
+      <div class="policy-block-header">
+        <div class="policy-block-num">01</div>
+        <div class="policy-block-title">Veri Sorumlusu</div>
+      </div>
+      <p>Bu gizlilik politikası, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca veri sorumlusu sıfatıyla hareket eden <strong>EGEFE Bilişim Sağlık Sanayi ve Ticaret A.Ş.</strong> (CROM TEST) tarafından hazırlanmıştır.</p>
+      <div class="policy-highlight">
+        <strong>EGEFE Bilişim Sağlık Sanayi ve Ticaret A.Ş.</strong><br>
+        E-posta: <a href="mailto:destek@cromtest.com">destek@cromtest.com</a> &nbsp;·&nbsp;
+        Web: <a href="index.html">www.cromtest.com</a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="policy-block">
+      <div class="policy-block-header">
+        <div class="policy-block-num">02</div>
+        <div class="policy-block-title">Toplanan Kişisel Veriler</div>
+      </div>
+      <p>Web sitemizi ziyaret ettiğinizde veya iletişim formumuzu doldurduğunuzda aşağıdaki veriler işlenebilir:</p>
+      <ul>
+        <li>Ad, soyad ve iletişim bilgileri (e-posta, telefon)</li>
+        <li>Temsil ettiğiniz kurum veya şirket adı</li>
+        <li>Talep konusu ve mesaj içeriği</li>
+        <li>IP adresi, tarayıcı türü ve ziyaret istatistikleri (çerezler aracılığıyla)</li>
+      </ul>
+      <p>Sağlık verileri, siyasi görüş veya özel nitelikli kişisel veriler hiçbir koşulda toplanmamaktadır.</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="policy-block">
+      <div class="policy-block-header">
+        <div class="policy-block-num">03</div>
+        <div class="policy-block-title">Verilerin İşlenme Amaçları</div>
+      </div>
+      <p>Kişisel verileriniz yalnızca aşağıdaki amaçlar doğrultusunda işlenmektedir:</p>
+      <ul>
+        <li>Talep, teklif ve teknik destek başvurularının yanıtlanması</li>
+        <li>Ürün ve hizmetlerimize ilişkin bilgilendirme yapılması</li>
+        <li>Dağıtım ortaklığı süreçlerinin yürütülmesi</li>
+        <li>Yasal yükümlülüklerin yerine getirilmesi</li>
+        <li>Web sitesi güvenliğinin ve performansının sağlanması</li>
+      </ul>
+    </div>
+
+    <!-- 4 -->
+    <div class="policy-block">
+      <div class="policy-block-header">
+        <div class="policy-block-num">04</div>
+        <div class="policy-block-title">Verilerin Aktarımı</div>
+      </div>
+      <p>Kişisel verileriniz; yasal zorunluluk bulunmadıkça ya da açık rızanız olmaksızın üçüncü kişi veya kuruluşlarla paylaşılmamaktadır.</p>
+      <p>Yalnızca aşağıdaki durumlarda aktarım gerçekleşebilir:</p>
+      <ul>
+        <li>Yetkili kamu kurum ve kuruluşlarının yasal talebi</li>
+        <li>E-posta altyapısı gibi teknik hizmet sağlayıcılar (veri işleyen sıfatıyla)</li>
+      </ul>
+      <div class="policy-highlight">
+        Yurt dışına veri aktarımı, KVKK'nın 9. maddesi kapsamında yalnızca yeterli koruma güvencesi bulunan ülkelere ve <strong>açık rızanız alınarak</strong> gerçekleştirilmektedir.
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="policy-block">
+      <div class="policy-block-header">
+        <div class="policy-block-num">05</div>
+        <div class="policy-block-title">Saklama Süreleri</div>
+      </div>
+      <p>Kişisel verileriniz, işlenme amacı ortadan kalktığında veya ilgili yasal saklama süresi dolduğunda güvenli biçimde silinmekte, yok edilmekte ya da anonim hale getirilmektedir.</p>
+      <ul>
+        <li>İletişim formu verileri: Başvuru tarihinden itibaren <strong>2 yıl</strong></li>
+        <li>Teklifle sonuçlanan başvurular: <strong>5 yıl</strong> (ticari kayıt zorunluluğu)</li>
+        <li>Çerez verileri: Türüne göre oturum sonu veya <strong>12 ay</strong></li>
+      </ul>
+    </div>
+
+    <!-- 6 -->
+    <div class="policy-block">
+      <div class="policy-block-header">
+        <div class="policy-block-num">06</div>
+        <div class="policy-block-title">Haklarınız (KVKK Madde 11)</div>
+      </div>
+      <p>Kişisel veri sahibi olarak aşağıdaki haklara sahipsiniz:</p>
+      <div class="policy-rights-grid">
+        <div class="policy-right-item">
+          <div class="policy-right-item-title">Bilgi edinme</div>
+          <p>Verilerinizin işlenip işlenmediğini öğrenme</p>
+        </div>
+        <div class="policy-right-item">
+          <div class="policy-right-item-title">Erişim</div>
+          <p>İşlenen verilerinize ilişkin bilgi talep etme</p>
+        </div>
+        <div class="policy-right-item">
+          <div class="policy-right-item-title">Düzeltme</div>
+          <p>Yanlış veya eksik verilerin düzeltilmesini isteme</p>
+        </div>
+        <div class="policy-right-item">
+          <div class="policy-right-item-title">Silme</div>
+          <p>Koşulların oluşması halinde verilerin silinmesini talep etme</p>
+        </div>
+        <div class="policy-right-item">
+          <div class="policy-right-item-title">İtiraz</div>
+          <p>Otomatik sistemlerle yapılan işlemlere itiraz etme</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="policy-block">
+      <div class="policy-block-header">
+        <div class="policy-block-num">07</div>
+        <div class="policy-block-title">Çerezler</div>
+      </div>
+      <p>Web sitemiz; temel işlevsellik için zorunlu çerezler ve ziyaret istatistikleri için analitik çerezler kullanmaktadır. Tarayıcı ayarlarınızdan çerezleri dilediğiniz zaman devre dışı bırakabilirsiniz, ancak bu durumda bazı site işlevleri kısıtlanabilir.</p>
+    </div>
+
+    <!-- İletişim CTA -->
+    <div class="policy-contact-box">
+      <div class="policy-contact-box-text">
+        <h3>KVKK Başvurusu Yapmak İster Misiniz?</h3>
+        <p>Haklarınızı kullanmak için iletişim formumuzu doldurun veya doğrudan e-posta gönderin. Talebiniz en geç 30 gün içinde yanıtlanır.</p>
+      </div>
+      <a href="contact.html" class="btn-teal">Başvuru Yap</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="brand_assets/logo_if_color.svg" alt="CROM TEST">
+      </div>
+      <p class="footer-tagline">
+        Laboratuvar, iş yeri ve bireysel kullanım için tasarlanmış; dakikalar içinde güvenilir sonuç veren yerli üretim uyuşturucu madde tarama çözümleri.
+      </p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social" aria-label="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+        <a href="#" class="footer-social" aria-label="Twitter / X">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="#" class="footer-social" aria-label="YouTube">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Ürünler</div>
+      <ul class="footer-links">
+        <li><a href="products.html">Çok Panelli Test Kitleri</a></li>
+        <li><a href="products.html">Numune Saflık Testi</a></li>
+        <li><a href="products.html">Tekli Panel Test Şeritleri</a></li>
+        <li><a href="products.html">Tükürük Test Kitleri</a></li>
+        <li><a href="products.html">İdrar Test Kitleri</a></li>
+        <li><a href="products.html">Özel Panel Konfigürasyonu</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Kurumsal</div>
+      <ul class="footer-links">
+        <li><a href="index.html#technology">Teknoloji</a></li>
+        <li><a href="index.html#certifications">Sertifikalar</a></li>
+        <li><a href="index.html#industries">Sektörler</a></li>
+        <li><a href="contact.html">Hakkımızda</a></li>
+        <li><a href="contact.html">Distribütörler</a></li>
+        <li><a href="contact.html">Kariyer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">İletişim</div>
+      <ul class="footer-links">
+        <li><a href="mailto:info@cromtest.com">info@cromtest.com</a></li>
+        <li><a href="tel:+903124825451">+90 312 482 5451</a></li>
+        <li><a href="contact.html">Teklif Al</a></li>
+        <li><a href="contact.html">Katalog İndir</a></li>
+        <li><a href="contact.html">Teknik Destek</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 CROM TEST — EGEFE Bilişim Sağlık Sanayi ve Ticaret A.Ş. Tüm hakları saklıdır.</div>
+    <div class="footer-legal">
+      <a href="privacy_policy.html">Gizlilik Politikası</a>
+      <a href="terms_of_use.html">Kullanım Koşulları</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+</script>
+
+</body>
+</html>

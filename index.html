@@ -39,6 +39,16 @@ body {
 ::-webkit-scrollbar-track { background: var(--light); }
 ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 2px; }
 
+/* ── GRAIN TEXTURE (remove these 7 lines to disable) ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 9999;
+}
+
 /* ── NAVBAR ── */
 .navbar {
   position: fixed;
@@ -80,6 +90,7 @@ body {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--teal); }
+.nav-links a:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 3px; color: var(--teal); }
 .nav-cta {
   display: flex;
   align-items: center;
@@ -103,6 +114,11 @@ body {
   color: #fff;
   border-color: var(--teal);
 }
+.btn-outline:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
 .btn-primary {
   font-family: var(--ff-display);
   font-size: 0.75rem;
@@ -123,6 +139,11 @@ body {
   box-shadow: 0 8px 24px rgba(10, 143, 160, 0.38);
 }
 .btn-primary:active { transform: translateY(0); }
+.btn-primary:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
 
 /* ── HERO ── */
 .hero {
@@ -230,6 +251,11 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(10, 143, 160, 0.45);
 }
+.btn-hero-primary:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
 .btn-hero-outline {
   font-family: var(--ff-display);
   font-size: 0.82rem;
@@ -249,6 +275,11 @@ body {
   border-color: var(--teal);
   color: var(--teal);
   background: rgba(255,255,255,0.9);
+}
+.btn-hero-outline:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 8px;
 }
 
 .hero-stats {
@@ -981,6 +1012,11 @@ footer {
   color: var(--sky);
   border-color: rgba(10,143,160,0.35);
 }
+.footer-social:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
 .footer-social svg { width: 16px; height: 16px; }
 
 .footer-col {}
@@ -1007,6 +1043,7 @@ footer {
   transition: color 0.2s;
 }
 .footer-links a:hover { color: #fff; }
+.footer-links a:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 3px; color: #fff; }
 
 .footer-bottom {
   padding-top: 2.5rem;
@@ -1033,6 +1070,7 @@ footer {
   transition: color 0.2s;
 }
 .footer-legal a:hover { color: rgba(255,255,255,0.6); }
+.footer-legal a:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 3px; color: rgba(255,255,255,0.6); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
@@ -1058,10 +1096,10 @@ footer {
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <a href="index.html" class="nav-logo">
-    <img src="Brand_Guideline/logo_if_white.svg" alt="CROM TEST">
+    <img src="brand_assets/logo_if_white.svg" alt="CROM TEST">
   </a>
   <ul class="nav-links">
-    <li><a href="#products">Ürünler</a></li>
+    <li><a href="products.html">Ürünler</a></li>
     <li><a href="#technology">Teknoloji</a></li>
     <li><a href="#certifications">Sertifikalar</a></li>
     <li><a href="#industries">Sektörler</a></li>
@@ -1096,7 +1134,7 @@ footer {
         <div class="hero-stat-label">Yıllık Deneyim</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-value">%99<span>,9</span></div>
+        <div class="hero-stat-value">%99<span>,6</span></div>
         <div class="hero-stat-label">Doğruluk Oranı</div>
       </div>
       <div class="hero-stat">
@@ -1106,7 +1144,7 @@ footer {
     </div>
   </div>
   <div class="hero-visual">
-    <img src="Brand_Guideline/logo_if_color.svg" alt="">
+    <img src="brand_assets/logo_if_white.svg" alt="">
   </div>
   <!-- TICKER -->
   <div class="ticker-wrap">
@@ -1191,7 +1229,7 @@ footer {
       </svg>
     </div>
     <div class="trust-text">
-      <div class="trust-title">%99,9 Doğruluk Oranı</div>
+      <div class="trust-title">%99,6 Doğruluk Oranı</div>
       <div class="trust-sub">Klinik doğrulanmış performans</div>
     </div>
   </div>
@@ -1351,7 +1389,7 @@ footer {
       <div class="tech-card-main">
         <div class="tech-label-small">Klinik Performans</div>
         <div class="tech-accuracy">
-          <div class="tech-accuracy-num">%99<span>,9</span></div>
+          <div class="tech-accuracy-num">%99<span>,6</span></div>
           <div class="tech-accuracy-sub">Doğruluk oranı</div>
         </div>
         <div class="tech-bar-wrap">
@@ -1419,7 +1457,7 @@ footer {
           </div>
           <div class="tech-feature-body">
             <div class="tech-feature-title">Güvenilir Sonuç</div>
-            <div class="tech-feature-desc">%99,9 doğruluk oranıyla klinik olarak doğrulanmış sonuçlar sunar. Uluslararası referans standartlarına tam uyumlu, güvenilir ve tekrarlanabilir ölçüm performansı sağlar..</div>
+            <div class="tech-feature-desc">%99,6 doğruluk oranıyla klinik olarak doğrulanmış sonuçlar sunar. Uluslararası referans standartlarına tam uyumlu, güvenilir ve tekrarlanabilir ölçüm performansı sağlar..</div>
           </div>
         </div>
       </div>
@@ -1525,7 +1563,7 @@ footer {
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
-        <img src="Brand_Guideline/logo_if_color.svg" alt="CROM TEST">
+        <img src="brand_assets/logo_if_color.svg" alt="CROM TEST">
       </div>
       <p class="footer-tagline">
         Laboratuvar, iş yeri ve bireysel kullanım için tasarlanmış; dakikalar içinde güvenilir sonuç veren yerli üretim uyuşturucu madde tarama çözümleri.
@@ -1585,9 +1623,8 @@ footer {
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 CROM TEST — EGEFE Bilişim Sağlık Sanayi ve Ticaret A.Ş. Tüm hakları saklıdır.</div>
     <div class="footer-legal">
-      <a href="contact.html">Gizlilik Politikası</a>
-      <a href="contact.html">Kullanım Koşulları</a>
-      <a href="contact.html">Mevzuat Uyumluluğu</a>
+      <a href="privacy_policy.html">Gizlilik Politikası</a>
+      <a href="terms_of_use.html">Kullanım Koşulları</a>
     </div>
   </div>
 </footer>

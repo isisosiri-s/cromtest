@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "source": "CROM TEST Katalog.html — PAGE 3 (Parametreler) + PAGE 6 (İdrar Bütünlük Testi)",
+    "numune_tipleri": ["İdrar", "Ağız Sıvısı", "Katı Madde"]
+  },
+
+  "parametreler": [
+    { "kod": "6-MAM", "ad": "6-Monoacetylmorphine",                    "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "ABP",   "ad": "AB-PINACA (Sentetik Esrar)",               "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "ACE",   "ad": "Acetaminophen (Parasetamol)",              "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "AMP",   "ad": "Amfetamin",                                "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "BAR",   "ad": "Barbitürat",                               "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "BZO",   "ad": "Benzodiazepin",                            "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "BUP",   "ad": "Buprenorfin",                              "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "CAF",   "ad": "Kafein",                                   "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "CNB",   "ad": "Kannabinol",                               "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "CFYL",  "ad": "Karfentanil",                              "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "CAT",   "ad": "Kathin",                                   "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "CLO",   "ad": "Klonazepam",                               "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "COC",   "ad": "Kokain",                                   "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "COD",   "ad": "Kodein",                                   "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "COT",   "ad": "Kotinin (Nikotin Metaboliti)",             "idrar": true,  "agiz": true,  "kati": false },
+    { "kod": "DIA",   "ad": "Diazepam",                                 "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "MDMA",  "ad": "Ecstasy (MDMA)",                           "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "ETG",   "ad": "Etil Glukuronid (Alkol Metaboliti)",       "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "EDDP",  "ad": "EDDP (Metadon Metaboliti)",                "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "FYL",   "ad": "Fentanil",                                 "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "GAB",   "ad": "Gabapentin",                               "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "KET",   "ad": "Ketamin",                                  "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "KRA",   "ad": "Kratom",                                   "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "LSD",   "ad": "LSD",                                      "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "THC",   "ad": "Marijuana (THC)",                          "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "MEP",   "ad": "Mefedron",                                 "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "MES",   "ad": "Meskalin",                                 "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "MTD",   "ad": "Metadon",                                  "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "MET",   "ad": "Metamfetamin",                             "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "MQL",   "ad": "Metakualon",                               "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "MOP",   "ad": "Morfin",                                   "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "OPI",   "ad": "Opiat",                                    "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "OXY",   "ad": "Oksikodon",                                "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "PCP",   "ad": "Fensiklidin (PCP)",                        "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "PGB",   "ad": "Pregabalin",                               "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "PPX",   "ad": "Propoksifen",                              "idrar": true,  "agiz": false, "kati": false },
+    { "kod": "PY",    "ad": "Silosibin (Sihirli Mantar)",               "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "K2",    "ad": "Sentetik Marijuana (K2/Spice)",            "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "TML",   "ad": "Tramadol",                                 "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "TCA",   "ad": "Trisiklik Antidepresanlar",                "idrar": true,  "agiz": true,  "kati": true  },
+    { "kod": "UR-144","ad": "UR-144 (Sentetik Kannabinoid)",            "idrar": true,  "agiz": true,  "kati": true  }
+  ],
+
+  "butunluk_testi": {
+    "aciklama": "İdrar numunesinin sahte veya manipüle edilip edilmediğini tespit eder. Numune doğrulama aracıdır, uyuşturucu tarama testi değildir.",
+    "numune_tipi": "Yalnızca İdrar",
+    "parametreler": [
+      { "kod": "CRE",    "ad": "Kreatinin",       "aciklama": "Numunenin seyreltilip seyreltilmediğini kontrol eder." },
+      { "kod": "NIT",    "ad": "Nitrit",           "aciklama": "Yaygın ticari katkı maddelerinin varlığını test eder." },
+      { "kod": "GLUT",   "ad": "Glutaraldehit",   "aciklama": "Numunede aldehit bulunup bulunmadığını kontrol eder." },
+      { "kod": "pH",     "ad": "pH Değeri",        "aciklama": "Asidik veya alkalin yabancı madde varlığını tespit eder." },
+      { "kod": "S.G.",   "ad": "Özgül Ağırlık",   "aciklama": "Numune yoğunluğunu ve seyreltilme durumunu ölçer." },
+      { "kod": "OX/PCC", "ad": "Oksidanlar / PCC","aciklama": "Çamaşır suyu ve hidrojen peroksit gibi oksitleyici ajanları test eder." }
+    ]
+  },
+
+  "urun_kategorileri": {
+    "tekli_panel": {
+      "aciklama": "Tek parametreli test şeridi. Her madde ayrı bir üründür.",
+      "numune_tipleri": ["İdrar", "Ağız Sıvısı", "Katı Madde"],
+      "not": "Tüm parametreler tekli panel olarak sunulabilir; numune uyumuna göre filtrele."
+    },
+    "coklu_panel": {
+      "aciklama": "Birden fazla parametrenin tek kartuşta birleşimi.",
+      "ornek_kombinasyonlar": ["6'lı Panel", "10'lu Panel", "12'li Panel"],
+      "not": "Özel kombinasyon 'Kendin Tasarla' özelliğiyle yapılandırılabilir."
+    },
+    "butunluk_testi": {
+      "aciklama": "İdrar numunesi doğrulama — manipülasyon tespiti.",
+      "numune_tipi": "Yalnızca İdrar",
+      "parametre_sayisi": 6
+    }
+  }
+}
