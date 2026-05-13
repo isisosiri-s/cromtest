@@ -207,6 +207,7 @@ body::after {
   box-shadow: 0 2px 8px rgba(1,31,69,0.05), 0 8px 24px rgba(1,31,69,0.04);
   display: flex; flex-direction: column; gap: 1rem;
   transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
 }
 .product-card:hover {
   transform: translateY(-3px);
@@ -227,6 +228,7 @@ body::after {
 .badge-coklu { color: var(--blue-mid); }
 .badge-tekli { color: var(--teal); }
 .badge-tam   { color: var(--steel); }
+.badge-ek    { color: var(--green); }
 
 .card-count-badge {
   font-family: var(--ff-display); font-size: 0.65rem; font-weight: 800;
@@ -277,6 +279,21 @@ body::after {
 .card-cta:active { transform: translateY(0); }
 .card-cta:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 8px; }
 .card-cta svg { width: 13px; height: 13px; }
+
+/* ── CARD IMAGE ── */
+.card-img {
+  width: 100%; height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--light);
+  display: flex; align-items: center; justify-content: center;
+}
+.card-img img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 0.5rem;
+}
 
 /* No results */
 .no-results {
@@ -425,6 +442,7 @@ footer {
       <button class="filter-btn" data-filter="coklu" onclick="setCategory(this,'coklu')">Çoklu Panel</button>
       <button class="filter-btn" data-filter="tekli" onclick="setCategory(this,'tekli')">Tekli Panel</button>
       <button class="filter-btn" data-filter="tam" onclick="setCategory(this,'tam')">Numune Saflık</button>
+      <button class="filter-btn" data-filter="ek" onclick="setCategory(this,'ek')">Ek Malzeme</button>
     </div>
 
     <!-- Level 2: Numune Tipi -->
@@ -452,6 +470,9 @@ footer {
       <div class="card-top">
         <span class="card-type-badge badge-coklu">Çoklu Panel</span>
         <span class="card-count-badge">12</span>
+      </div>
+      <div class="card-img">
+        <img src="Products/İdrar_UT-ön_taraf.png" alt="Klasik 12'li Uyuşturucu Test Kiti">
       </div>
       <div>
         <div class="card-name">Klasik 12'li Uyuşturucu Test Kiti</div>
@@ -537,10 +558,36 @@ footer {
       </a>
     </div>
 
+    <!-- ═══ EK MALZEME ═══ -->
+    <div class="product-card" data-category="ek" data-idrar="true" data-agiz="false" data-kati="false">
+      <div class="card-top">
+        <span class="card-type-badge badge-ek">Ek Malzeme</span>
+      </div>
+      <div>
+        <div class="card-name">İdrar Numune Kabı</div>
+        <div class="card-code">CRT-ACC-UC</div>
+      </div>
+      <div class="card-params">
+        <span class="card-param-badge">60 mL</span>
+        <span class="card-param-badge">Vidalı Kapak</span>
+        <span class="card-param-badge">Steril</span>
+      </div>
+      <div class="card-samples">
+        <span class="sample-dot dot-idrar">İdrar</span>
+      </div>
+      <a href="contact.html" class="card-cta">
+        Teklif Al
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+
     <!-- ═══ TEKLİ PANEL ═══ -->
 
     <div class="product-card" data-category="tekli" data-idrar="true" data-agiz="true" data-kati="true">
       <div class="card-top"><span class="card-type-badge badge-tekli">Tekli Panel</span></div>
+      <div class="card-img">
+        <img src="Products/1_strip_gorsel.png" alt="Amfetamin Test Şeridi">
+      </div>
       <div><div class="card-name">Amfetamin</div><div class="card-code">AMP</div></div>
       <div class="card-samples"><span class="sample-dot dot-idrar">İdrar</span><span class="sample-dot dot-agiz">Ağız Sıvısı</span><span class="sample-dot dot-kati">Katı Madde</span></div>
       <a href="contact.html" class="card-cta">Teklif Al <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
@@ -918,7 +965,7 @@ footer {
 
     // Show/hide sample filter
     const sampleFilter = document.getElementById('sampleFilter');
-    if (category === 'tam') {
+    if (category === 'tam' || category === 'ek') {
       sampleFilter.classList.remove('visible');
       activeSample = 'hepsi';
       document.querySelectorAll('.filter-sample-btn').forEach(b => b.classList.remove('active'));

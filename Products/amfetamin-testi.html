@@ -85,6 +85,11 @@ body::after {
 .btn-primary:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 6px; }
 
 /* ── IMAGE VIEWER ── */
+.image-wrap {
+  display: flex; flex-direction: column; gap: 0.75rem;
+  position: sticky; top: 88px; align-self: start;
+}
+
 .product-image-viewer {
   position: relative;
   background: var(--light);
@@ -109,6 +114,44 @@ body::after {
   padding: 0.2rem 0.7rem; white-space: nowrap;
 }
 
+.image-thumbs {
+  display: flex; gap: 0.5rem;
+}
+.image-thumb {
+  flex: 1; aspect-ratio: 1;
+  background: var(--light);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.image-thumb img { width: 75%; height: 75%; object-fit: contain; }
+.image-thumb:hover { border-color: rgba(26,107,191,0.3); }
+.image-thumb.active {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(26,107,191,0.12);
+}
+.image-thumb:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+.img-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: none; border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--navy);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 2; padding: 0.3rem;
+}
+.product-image-viewer:hover .img-nav { opacity: 1; pointer-events: all; }
+.img-nav:hover { transform: translateY(-50%) scale(1.2); }
+.img-nav:active { transform: translateY(-50%) scale(0.9); }
+.img-nav:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; opacity: 1; pointer-events: all; border-radius: 4px; }
+.img-nav svg { width: 20px; height: 20px; }
+.img-nav-prev { left: 0.6rem; }
+.img-nav-next { right: 0.6rem; }
+
 /* ── BREADCRUMB ── */
 .breadcrumb {
   padding: 100px 6vw 0;
@@ -129,7 +172,7 @@ body::after {
 /* ── PRODUCT HERO ── */
 .product-hero {
   background: linear-gradient(145deg, #f4faff 0%, #deeef8 40%, #c6e3f4 70%, #a8d4ec 100%);
-  padding: 2rem 6vw 4rem; position: relative; overflow: hidden;
+  padding: 2rem 6vw 4rem; position: relative;
 }
 .hero-mesh {
   position: absolute; inset: 0; pointer-events: none;
@@ -144,8 +187,9 @@ body::after {
 }
 .product-hero-inner {
   position: relative; z-index: 2;
-  display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: end;
+  display: grid; grid-template-columns: 38% 1fr; gap: 3.5rem; align-items: center;
 }
+.product-hero-info { display: flex; flex-direction: column; justify-content: center; }
 .product-tag {
   display: inline-flex; align-items: center; gap: 0.5rem;
   font-family: var(--ff-display); font-size: 0.62rem; font-weight: 700;
@@ -193,7 +237,10 @@ body::after {
   background: linear-gradient(160deg, #e8f5fb 0%, #d4ecf7 60%, #c0e1f1 100%);
 }
 .product-layout {
-  display: grid; grid-template-columns: 1fr 360px; gap: 2rem; align-items: start;
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.info-stack {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
 }
 
 /* ── NUMUNE SELECTOR ── */
@@ -201,9 +248,10 @@ body::after {
   background: #fff; border-radius: 20px; padding: 2rem;
   box-shadow: 0 2px 8px rgba(1,31,69,0.05), 0 12px 40px rgba(1,31,69,0.06);
   border: 1px solid rgba(26,107,191,0.1);
+  overflow: hidden;
 }
 .numune-card-inner {
-  display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: start;
+  display: grid; grid-template-columns: 40% 1fr; gap: 2rem; align-items: start;
 }
 .numune-label {
   font-family: var(--ff-display); font-size: 0.65rem; font-weight: 700;
@@ -211,21 +259,28 @@ body::after {
   margin-bottom: 1rem;
 }
 .numune-tabs {
-  display: flex; gap: 0.5rem; margin-bottom: 1rem;
+  display: flex; gap: 0; margin-bottom: 1rem;
   background: var(--light); border-radius: 10px; padding: 4px;
+  position: relative;
+}
+.numune-slider {
+  position: absolute;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px rgba(1,31,69,0.1);
+  pointer-events: none; z-index: 0;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .numune-tab {
   flex: 1; font-family: var(--ff-display); font-size: 0.72rem; font-weight: 700;
   letter-spacing: 0.06em; text-transform: uppercase;
   padding: 0.55rem 0.5rem; border-radius: 7px; border: none;
   cursor: pointer; color: var(--steel); background: transparent;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  position: relative; z-index: 1;
+  transition: color 0.2s;
 }
 .numune-tab:hover { color: var(--teal); }
-.numune-tab.active {
-  background: #fff; color: var(--navy);
-  box-shadow: 0 2px 8px rgba(1,31,69,0.1);
-}
+.numune-tab.active { color: var(--navy); }
 .numune-tab:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 7px; }
 
 /* Dynamic content */
@@ -235,7 +290,7 @@ body::after {
 .numune-desc {
   font-size: 0.95rem; line-height: 1.8; color: var(--mid);
   font-weight: 300; margin-bottom: 1.8rem;
-  padding-bottom: 1.8rem; border-bottom: 1px solid var(--smoke);
+  padding-bottom: 1rem;
 }
 
 .numune-specs {
@@ -285,40 +340,174 @@ body::after {
 .btn-teklif:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 10px; }
 .btn-teklif svg { width: 15px; height: 15px; }
 
+/* ── EK MALZEME ── */
+.ek-malzeme-wrap {
+  display: none;
+  margin-top: 1rem;
+}
+.ek-malzeme-wrap.visible { display: block; }
+.ek-malzeme-label {
+  font-family: var(--ff-display); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--steel);
+  margin-bottom: 0.6rem;
+}
+
+/* Add-on card */
+.addon-card {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--white);
+  border: 1.5px solid rgba(26,107,191,0.14);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(1,31,69,0.06);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.addon-card.selected {
+  border-color: var(--teal);
+  box-shadow: 0 2px 16px rgba(26,107,191,0.14);
+}
+.addon-img {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: var(--light);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.addon-img svg { width: 28px; height: 28px; color: var(--steel); }
+.addon-body { flex: 1; min-width: 0; }
+.addon-name {
+  font-family: var(--ff-display); font-size: 0.85rem; font-weight: 700;
+  color: var(--navy); line-height: 1.3;
+}
+.addon-desc {
+  font-family: var(--ff-body); font-size: 0.75rem; color: var(--steel);
+  margin-top: 0.18rem; line-height: 1.4;
+}
+.addon-right {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; flex-shrink: 0;
+}
+.addon-price {
+  font-family: var(--ff-display); font-size: 0.88rem; font-weight: 800;
+  color: var(--teal);
+}
+.addon-btn {
+  font-family: var(--ff-display); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  border: 1.5px solid var(--teal); border-radius: 6px;
+  padding: 0.35rem 0.85rem; cursor: pointer;
+  background: transparent; color: var(--teal);
+  transition: background 0.18s, color 0.18s, transform 0.12s;
+  white-space: nowrap;
+}
+.addon-btn:hover { background: var(--teal); color: #fff; }
+.addon-btn:active { transform: scale(0.96); }
+.addon-btn.added { background: var(--teal); color: #fff; border-color: var(--teal); }
+.addon-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+
+/* Addon adet seçici */
+.addon-qty-row {
+  display: flex; align-items: center; gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+.addon-qty-label {
+  font-family: var(--ff-display); font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.08em; color: var(--steel); margin-right: 0.15rem;
+}
+.addon-qty-btn {
+  font-family: var(--ff-display); font-size: 0.72rem; font-weight: 700;
+  padding: 0.22rem 0.6rem; border-radius: 5px;
+  border: 1.5px solid rgba(26,107,191,0.2);
+  background: var(--light); color: var(--mid);
+  cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.addon-qty-btn:hover { border-color: var(--teal); color: var(--teal); }
+.addon-qty-btn.active {
+  background: var(--teal); color: #fff; border-color: var(--teal);
+}
+.addon-qty-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
 /* ── PAKET SEÇİCİ ── */
 .paket-label {
   font-family: var(--ff-display); font-size: 0.65rem; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase; color: var(--steel);
   margin-bottom: 0.75rem;
 }
-.paket-options { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.paket-options {
+  display: flex; gap: 0; margin-bottom: 1.5rem;
+  background: var(--light); border-radius: 10px; padding: 4px;
+  position: relative;
+}
+.paket-slider {
+  position: absolute;
+  background: var(--teal);
+  border-radius: 7px;
+  box-shadow: 0 3px 12px rgba(26,107,191,0.25);
+  pointer-events: none; z-index: 0;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
 .paket-btn {
   flex: 1; font-family: var(--ff-display); font-size: 0.78rem; font-weight: 700;
-  letter-spacing: 0.06em; padding: 0.55rem 0; border-radius: 8px;
-  border: 1.5px solid rgba(1,31,69,0.12); background: rgba(255,255,255,0.6);
+  letter-spacing: 0.06em; padding: 0.55rem 0; border-radius: 7px;
+  border: none; background: transparent;
   color: var(--mid); cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  position: relative; z-index: 1;
+  transition: color 0.2s;
 }
-.paket-btn:hover { border-color: var(--teal); color: var(--teal); }
-.paket-btn.active {
-  background: var(--teal); color: #fff; border-color: var(--teal);
-  box-shadow: 0 3px 12px rgba(26,107,191,0.25);
-}
+.paket-btn:hover { color: var(--teal); }
+.paket-btn.active { color: #fff; }
 .paket-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
 
-/* ── INFO PANELS ── */
-.info-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+/* ── BİLGİ KARTI (sekmeli) ── */
+.detail-card-wrap {
+  background: transparent;
+}
 
-.info-panel {
-  background: #fff; border-radius: 16px; padding: 1.8rem;
-  box-shadow: 0 2px 8px rgba(1,31,69,0.04), 0 8px 24px rgba(1,31,69,0.04);
-  border: 1px solid rgba(26,107,191,0.08);
+.detail-tabs {
+  display: flex; gap: 0;
+  padding: 0;
+  background: transparent;
+  position: relative;
 }
-.info-panel-title {
-  font-family: var(--ff-display); font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal);
-  margin-bottom: 1.2rem;
+
+.tab-slider {
+  position: absolute;
+  bottom: -1px;
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.detail-tab {
+  font-family: var(--ff-display); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--steel);
+  padding: 1rem 1.2rem;
+  background: transparent;
+  border: none; border-radius: 10px 10px 0 0;
+  cursor: pointer; position: relative; z-index: 1;
+  transition: color 0.2s;
+}
+.detail-tab:hover { color: var(--navy); }
+.detail-tab.active { color: var(--navy); }
+.detail-tab:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+.detail-card {
+  background: #fff;
+  border-radius: 0 14px 14px 14px;
+  border: 1px solid rgba(26,107,191,0.12);
+  box-shadow: 0 2px 8px rgba(1,31,69,0.05), 0 12px 40px rgba(1,31,69,0.06);
+  overflow: hidden;
+  transition: height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.detail-panel { display: none; padding: 1.8rem; }
+.detail-panel.active { display: block; animation: tabFadeIn 0.32s ease forwards; }
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .info-row {
   display: flex; justify-content: space-between; align-items: center;
   padding: 0.65rem 0; border-bottom: 1px solid var(--smoke); gap: 1rem;
@@ -327,7 +516,7 @@ body::after {
 .info-row-label { font-size: 0.85rem; color: var(--steel); font-weight: 300; }
 .info-row-value { font-family: var(--ff-display); font-size: 0.82rem; font-weight: 700; color: var(--navy); text-align: right; }
 
-.cert-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.cert-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.2rem; }
 .cert-pill {
   font-family: var(--ff-display); font-size: 0.65rem; font-weight: 700;
   letter-spacing: 0.08em; color: var(--teal);
@@ -336,13 +525,28 @@ body::after {
 }
 .cert-pill::before { content: '✓ '; }
 
-.warning-note {
-  background: rgba(196,92,20,0.05); border: 1px solid rgba(196,92,20,0.15);
-  border-radius: 10px; padding: 0.9rem 1.1rem;
-  display: flex; gap: 0.6rem; align-items: flex-start; margin-top: 0.8rem;
+.how-step {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 0.85rem 0; border-bottom: 1px solid var(--smoke);
 }
-.warning-note svg { width: 14px; height: 14px; color: #c45c14; flex-shrink: 0; margin-top: 1px; }
-.warning-note p { font-size: 0.78rem; line-height: 1.6; color: var(--mid); font-weight: 300; }
+.how-step:last-child { border-bottom: none; }
+.how-step-num {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(26,107,191,0.1); color: var(--teal);
+  font-family: var(--ff-display); font-size: 0.72rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.how-step-text { font-size: 0.88rem; line-height: 1.7; color: var(--mid); font-weight: 300; padding-top: 0.3rem; }
+
+.paket-icerik-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.paket-icerik-item {
+  display: flex; align-items: center; gap: 0.7rem;
+  font-size: 0.88rem; color: var(--mid); font-weight: 300;
+}
+.paket-icerik-item::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0; opacity: 0.7;
+}
 
 /* ── FOOTER ── */
 footer {
@@ -381,13 +585,12 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .product-layout { grid-template-columns: 1fr; }
-  .info-stack { display: grid; grid-template-columns: repeat(2, 1fr); }
-  .product-hero-inner { grid-template-columns: 1fr; }
+  .product-hero-inner { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
+  .product-hero-inner { grid-template-columns: 1fr; }
   .info-stack { grid-template-columns: 1fr; }
   .product-body { padding: 2rem 5vw 4rem; }
   .numune-specs { grid-template-columns: 1fr; }
@@ -433,20 +636,114 @@ footer {
   <div class="hero-mesh"></div>
   <div class="hero-grid"></div>
   <div class="product-hero-inner">
-    <div>
-      <div class="product-tag">Tekli Panel</div>
-      <h1 class="product-hero-name">Amfetamin<br>Testi</h1>
-      <div class="product-hero-code">AMP — CRT-SP-AMP</div>
-      <div class="product-hero-badges">
-        <span class="sample-badge sb-idrar">İdrar</span>
-        <span class="sample-badge sb-agiz">Ağız Sıvısı</span>
-        <span class="sample-badge sb-kati">Katı Madde</span>
+
+    <!-- SOL: Görsel + Thumbnail'lar -->
+    <div class="image-wrap">
+      <div class="product-image-viewer">
+        <button class="img-nav img-nav-prev" onclick="shiftImage(-1)" aria-label="Önceki görsel">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <img id="productImage" src="1_strip_gorsel.png" alt="Amfetamin Test Şeridi — İdrar">
+        <button class="img-nav img-nav-next" onclick="shiftImage(1)" aria-label="Sonraki görsel">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <span class="image-numune-label" id="imageLabel">İdrar</span>
+      </div>
+      <div class="image-thumbs">
+        <button class="image-thumb active" onclick="selectThumb(this, '1_strip_gorsel.png')" aria-label="Görsel 1">
+          <img src="1_strip_gorsel.png" alt="">
+        </button>
+        <button class="image-thumb" onclick="selectThumb(this, '1_strip_gorsel.png')" aria-label="Görsel 2">
+          <img src="1_strip_gorsel.png" alt="">
+        </button>
+        <button class="image-thumb" onclick="selectThumb(this, '1_strip_gorsel.png')" aria-label="Görsel 3">
+          <img src="1_strip_gorsel.png" alt="">
+        </button>
       </div>
     </div>
-    <div class="product-hero-stat">
-      <div class="stat-label">Doğruluk Oranı</div>
-      <div class="stat-value">99<span class="stat-unit">%</span></div>
+
+    <!-- SAĞ: Ürün Bilgisi + Tüm Seçiciler -->
+    <div class="product-hero-info">
+      <div class="product-tag">Tekli Panel</div>
+      <h1 class="product-hero-name">Amfetamin<br>Testi</h1>
+
+      <!-- Kart içeriği -->
+      <div class="numune-card" style="margin-top:1.8rem;">
+
+      <div class="numune-label">Numune Tipi Seçin</div>
+      <div class="numune-tabs" role="tablist">
+        <div class="numune-slider"></div>
+        <button class="numune-tab active" role="tab" onclick="selectNumune('idrar', this)">İdrar</button>
+        <button class="numune-tab" role="tab" onclick="selectNumune('agiz', this)">Ağız Sıvısı</button>
+        <button class="numune-tab" role="tab" onclick="selectNumune('kati', this)">Katı Madde</button>
+      </div>
+
+      <!-- Paket Seçici -->
+      <div class="paket-label" style="margin-top:1.2rem;">Paket İçeriği</div>
+      <div class="paket-options">
+        <div class="paket-slider"></div>
+        <button class="paket-btn" onclick="selectPaket(this, 5)">5 Test</button>
+        <button class="paket-btn" onclick="selectPaket(this, 10)">10 Test</button>
+        <button class="paket-btn active" onclick="selectPaket(this, 25)">25 Test</button>
+      </div>
+
+      <!-- Dinamik içerik -->
+      <div class="numune-content active" id="content-idrar">
+        <p class="numune-desc">İdrar numunesi ile amfetamin tespiti için tasarlanmış hızlı immünokromatografik tarama testidir. Numune alındıktan sonra 5 dakika içinde güvenilir sonuç verir.</p>
+      </div>
+      <div class="numune-content" id="content-agiz">
+        <p class="numune-desc">Tükürük (ağız sıvısı) numunesi ile amfetamin tespiti için tasarlanmış non-invazif hızlı testtir. Saha uygulamaları ve trafik denetimlerinde yaygın olarak kullanılır.</p>
+      </div>
+      <div class="numune-content" id="content-kati">
+        <p class="numune-desc">Katı madde analizinde amfetamin ve türevlerinin tespiti için kullanılan alan testi kitidir. Şüpheli maddenin doğrudan sahada analiz edilmesini sağlar.</p>
+      </div>
+
+      <!-- Ek Malzeme — sadece İdrar seçilince görünür -->
+      <div class="ek-malzeme-wrap" id="ekMalzemeWrap">
+        <div class="ek-malzeme-label">Ek Malzeme</div>
+        <div class="addon-card" id="addonCard">
+          <div class="addon-img">
+            <img src="container-urine.png" alt="İdrar Numune Kabı" style="width:100%; height:100%; object-fit:contain; padding:4px;">
+          </div>
+          <div class="addon-body">
+            <div class="addon-name">İdrar Numune Kabı</div>
+            <div class="addon-desc">Steril, tek kullanımlık · 60 mL · Kapaklı</div>
+            <div class="addon-qty-row">
+              <span class="addon-qty-label">Adet:</span>
+              <button class="addon-qty-btn active" onclick="selectAddonAdet(1, this)">1</button>
+              <button class="addon-qty-btn" onclick="selectAddonAdet(5, this)">5</button>
+              <button class="addon-qty-btn" onclick="selectAddonAdet(10, this)">10</button>
+            </div>
+          </div>
+          <div class="addon-right">
+            <span class="addon-price" id="addonPrice">+12,00 ₺</span>
+            <button class="addon-btn" id="addonBtn" onclick="toggleAddon()">Ekle</button>
+          </div>
+        </div>
+        <input type="checkbox" id="ekMalzemeCheck" style="display:none;" onchange="updatePrice()">
+      </div>
+
+      <!-- Fiyat -->
+      <div style="margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--smoke);">
+        <div class="paket-label">Fiyat</div>
+        <div style="display:flex; align-items:baseline; gap:0.75rem; margin-top:0.2rem;">
+          <div style="font-family:var(--ff-display); font-size:2rem; font-weight:800; color:var(--navy); line-height:1;">
+            <span id="priceDisplay">675,00</span> <span style="font-size:1rem; font-weight:400; color:var(--steel);">₺</span>
+          </div>
+          <div id="savingsBadge" style="display:none;">
+            <span style="font-family:var(--ff-display); font-size:0.72rem; font-weight:700; color:#1a7a4a;" id="savingsText"></span>
+          </div>
+        </div>
+        <a href="../contact.html" class="btn-teklif" style="margin-top:1rem;">
+          Teklif Al
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      </div><!-- /numune-card -->
+
     </div>
+
   </div>
 </section>
 
@@ -454,110 +751,31 @@ footer {
 <section class="product-body">
   <div class="product-layout">
 
-    <!-- BİRLEŞİK KART: Görsel sol, içerik sağ -->
-    <div class="numune-card">
-      <div class="numune-card-inner">
-
-        <!-- SOL: Küçük görsel -->
-        <div class="product-image-viewer">
-          <img id="productImage" src="1_strip_gorsel.png" alt="Amfetamin Test Şeridi — İdrar">
-          <span class="image-numune-label" id="imageLabel">İdrar</span>
-        </div>
-
-        <!-- SAĞ: Tüm interaktif içerik -->
-        <div>
-          <!-- Numune Seçici -->
-          <div class="numune-label">Numune Tipi Seçin</div>
-          <div class="numune-tabs" role="tablist">
-            <button class="numune-tab active" role="tab" onclick="selectNumune('idrar', this)">İdrar</button>
-            <button class="numune-tab" role="tab" onclick="selectNumune('agiz', this)">Ağız Sıvısı</button>
-            <button class="numune-tab" role="tab" onclick="selectNumune('kati', this)">Katı Madde</button>
-          </div>
-
-          <!-- Paket Seçici — numune hemen altında -->
-          <div class="paket-label">Paket İçeriği</div>
-          <div class="paket-options">
-            <button class="paket-btn" onclick="selectPaket(this, 5)">5 Test</button>
-            <button class="paket-btn" onclick="selectPaket(this, 10)">10 Test</button>
-            <button class="paket-btn active" onclick="selectPaket(this, 25)">25 Test</button>
-          </div>
-
-          <!-- Dinamik içerik -->
-          <div class="numune-content active" id="content-idrar">
-            <p class="numune-desc">İdrar numunesi ile amfetamin tespiti için tasarlanmış hızlı immünokromatografik tarama testidir. Numune alındıktan sonra 5 dakika içinde güvenilir sonuç verir. Laboratuvar ekipmanı gerektirmez, yerinde uygulama için idealdir.</p>
-            <div class="numune-specs">
-              <div class="spec-item"><span class="spec-item-label">Sonuç Süresi</span><span class="spec-item-value">5 dakika</span></div>
-              <div class="spec-item"><span class="spec-item-label">Kesim Değeri</span><span class="spec-item-value">1.000 ng/mL</span></div>
-              <div class="spec-item"><span class="spec-item-label">Saklama</span><span class="spec-item-value">2–30°C</span></div>
-              <div class="spec-item"><span class="spec-item-label">Raf Ömrü</span><span class="spec-item-value">24 ay</span></div>
-            </div>
-          </div>
-
-          <div class="numune-content" id="content-agiz">
-            <p class="numune-desc">Tükürük (ağız sıvısı) numunesi ile amfetamin tespiti için tasarlanmış non-invazif hızlı testtir. Saha uygulamaları ve trafik denetimlerinde yaygın olarak kullanılır. Anlık kullanımı yansıtır.</p>
-            <div class="numune-specs">
-              <div class="spec-item"><span class="spec-item-label">Sonuç Süresi</span><span class="spec-item-value">5–10 dakika</span></div>
-              <div class="spec-item"><span class="spec-item-label">Kesim Değeri</span><span class="spec-item-value">25 ng/mL</span></div>
-              <div class="spec-item"><span class="spec-item-label">Saklama</span><span class="spec-item-value">2–30°C</span></div>
-              <div class="spec-item"><span class="spec-item-label">Raf Ömrü</span><span class="spec-item-value">24 ay</span></div>
-            </div>
-          </div>
-
-          <div class="numune-content" id="content-kati">
-            <p class="numune-desc">Katı madde analizinde amfetamin ve türevlerinin tespiti için kullanılan alan testi kitidir. Şüpheli maddenin doğrudan sahada analiz edilmesini sağlar. Adli, gümrük ve güvenlik uygulamalarında kritik rol oynar.</p>
-            <div class="numune-specs">
-              <div class="spec-item"><span class="spec-item-label">Sonuç Süresi</span><span class="spec-item-value">5 dakika</span></div>
-              <div class="spec-item"><span class="spec-item-label">Hassasiyet</span><span class="spec-item-value">%99</span></div>
-              <div class="spec-item"><span class="spec-item-label">Saklama</span><span class="spec-item-value">2–30°C</span></div>
-              <div class="spec-item"><span class="spec-item-label">Raf Ömrü</span><span class="spec-item-value">24 ay</span></div>
-            </div>
-          </div>
-
-          <!-- Tek Fiyat + CTA -->
-          <div style="border-top: 1px solid var(--smoke); padding-top: 1.2rem; margin-top: 1.2rem;">
-            <div class="price-row">
-              <span class="price-label">Birim Fiyat</span>
-              <span class="price-value placeholder" id="priceDisplay">[FİYAT]</span>
-            </div>
-            <a href="../contact.html" class="btn-teklif" style="margin-top:1rem;">
-              Teklif Al
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-            </a>
-          </div>
-        </div>
-
+    <!-- Sekmeli Bilgi Kartı -->
+    <div class="detail-card-wrap">
+      <div class="detail-tabs" role="tablist">
+        <div class="tab-slider" id="tabSlider"></div>
+        <button class="detail-tab active" role="tab" onclick="switchTab(this,'tab-bilgi')">Ürün Bilgileri</button>
+        <button class="detail-tab" role="tab" onclick="switchTab(this,'tab-kullanim')">Nasıl Kullanılır?</button>
+        <button class="detail-tab" role="tab" onclick="switchTab(this,'tab-icerik')">Paket İçeriği</button>
       </div>
-    </div>
 
-    <!-- SAĞ: Bilgi panelleri -->
-    <div class="info-stack">
+      <div class="detail-card">
 
-      <div class="info-panel">
-        <div class="info-panel-title">Ürün Bilgileri</div>
+      <!-- Ürün Bilgileri -->
+      <div class="detail-panel active" id="tab-bilgi">
         <div class="info-row">
           <span class="info-row-label">Ürün Kodu</span>
           <span class="info-row-value">CRT-SP-AMP</span>
-        </div>
-        <div class="info-row">
-          <span class="info-row-label">Kategori</span>
-          <span class="info-row-value">Tekli Panel</span>
-        </div>
-        <div class="info-row">
-          <span class="info-row-label">Parametre</span>
-          <span class="info-row-value">Amfetamin (AMP)</span>
         </div>
         <div class="info-row">
           <span class="info-row-label">Test Yöntemi</span>
           <span class="info-row-value">İmmünokromatografi</span>
         </div>
         <div class="info-row">
-          <span class="info-row-label">Üretim Yeri</span>
-          <span class="info-row-value">Türkiye</span>
+          <span class="info-row-label">Sonuç Süresi</span>
+          <span class="info-row-value">5 dakika</span>
         </div>
-      </div>
-
-      <div class="info-panel">
-        <div class="info-panel-title">Sertifikalar</div>
         <div class="cert-row">
           <span class="cert-pill">CE İşaretli</span>
           <span class="cert-pill">ISO 13485</span>
@@ -566,8 +784,43 @@ footer {
         </div>
       </div>
 
+      <!-- Nasıl Kullanılır? -->
+      <div class="detail-panel" id="tab-kullanim">
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <div class="how-step-text">Test kitini ambalajından çıkarın ve oda sıcaklığına gelmesini bekleyin (2–30°C).</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <div class="how-step-text">Numuneyi steril bir kap içinde toplayın. İdrar testi için 3–5 mL, ağız sıvısı için özel toplayıcı ucu kullanın.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <div class="how-step-text">Test şeridini numune kabına daldırın veya pipet ile tete 3–4 damla numune ekleyin.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">4</div>
+          <div class="how-step-text">5 dakika bekleyin. Sonucu bu süre içinde okuyun — 10 dakikadan sonra okunan sonuçlar geçersizdir.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">5</div>
+          <div class="how-step-text"><strong>Sonuç yorumu:</strong> 2 çizgi = Negatif, 1 çizgi = Pozitif, 0 çizgi = Geçersiz (testi tekrarlayın).</div>
+        </div>
+      </div>
 
-    </div>
+      <!-- Paket İçeriği -->
+      <div class="detail-panel" id="tab-icerik">
+        <div class="paket-icerik-list">
+          <div class="paket-icerik-item">Test şeritleri (seçilen adette)</div>
+          <div class="paket-icerik-item">Kullanım kılavuzu (Türkçe / İngilizce)</div>
+          <div class="paket-icerik-item">Kalite kontrol kartı</div>
+          <div class="paket-icerik-item">Nem emici paket</div>
+          <div class="paket-icerik-item">CE uygunluk beyanı</div>
+        </div>
+      </div>
+
+      </div><!-- /detail-card -->
+    </div><!-- /detail-card-wrap -->
   </div>
 </section>
 
@@ -626,26 +879,144 @@ footer {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // Numune başına görsel ve etiket
-  // Görseller hazır olunca src değerlerini güncelle
+  // Birim fiyatlar (5 test başı baz fiyat)
+  // İndirimler: 5 test = %0, 10 test = %5, 25 test = %10
+  const birimFiyat = { idrar: 27, agiz: 33, kati: 31 }; // TL/adet
+  const indirim    = { 5: 0, 10: 0.05, 25: 0.10 };
   const numuneImages = {
-    idrar: { src: '1_strip_gorsel.png', label: 'İdrar Numunesi' },         // → amfetamin-idrar.png
-    agiz:  { src: '1_strip_gorsel.png', label: 'Ağız Sıvısı Numunesi' },   // → amfetamin-agiz.png
-    kati:  { src: '1_strip_gorsel.png', label: 'Katı Madde Analizi' }       // → amfetamin-kati.png
+    idrar: { src: '1_strip_gorsel.png', label: 'İdrar Numunesi' },
+    agiz:  { src: '1_strip_gorsel.png', label: 'Ağız Sıvısı Numunesi' },
+    kati:  { src: '1_strip_gorsel.png', label: 'Katı Madde Analizi' }
   };
+  let aktifNumune = 'idrar';
+  let aktifPaket  = 25;
+
+  function formatTL(val) {
+    return val.toFixed(2).replace('.', ',');
+  }
+
+  const EK_MALZEME_BIRIM = 12;
+  let aktifAddonAdet = 1;
+
+  function selectAddonAdet(adet, el) {
+    aktifAddonAdet = adet;
+    el.closest('.addon-qty-row').querySelectorAll('.addon-qty-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    const total = EK_MALZEME_BIRIM * aktifAddonAdet;
+    document.getElementById('addonPrice').textContent = '+' + total.toFixed(2).replace('.', ',') + ' ₺';
+    updatePrice();
+  }
+
+  function updatePrice() {
+    const birim      = birimFiyat[aktifNumune];
+    const toplam     = birim * aktifPaket;
+    const oran       = indirim[aktifPaket];
+    const tasarruf   = toplam * oran;
+    const ekCheck    = document.getElementById('ekMalzemeCheck');
+    const ekEklendi  = ekCheck && ekCheck.checked ? EK_MALZEME_BIRIM * aktifAddonAdet : 0;
+    const sonFiyat   = (toplam - tasarruf) + ekEklendi;
+
+    const [tam, kurus] = formatTL(sonFiyat).split(',');
+    document.getElementById('priceDisplay').innerHTML = tam + '<span style="font-size:1rem;font-weight:800;vertical-align:baseline;line-height:1;">,'+kurus+'</span>';
+
+    const badge = document.getElementById('savingsBadge');
+    const text  = document.getElementById('savingsText');
+    if (tasarruf > 0) {
+      text.textContent = formatTL(tasarruf) + ' ₺ tasarruf ettin';
+      badge.style.display = 'block';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  function toggleAddon() {
+    const check = document.getElementById('ekMalzemeCheck');
+    const btn   = document.getElementById('addonBtn');
+    const card  = document.getElementById('addonCard');
+    check.checked = !check.checked;
+    if (check.checked) {
+      btn.textContent = '✓ Eklendi';
+      btn.classList.add('added');
+      card.classList.add('selected');
+    } else {
+      btn.textContent = 'Ekle';
+      btn.classList.remove('added');
+      card.classList.remove('selected');
+    }
+    updatePrice();
+  }
+
+  function toggleEkMalzeme(numune) {
+    const wrap  = document.getElementById('ekMalzemeWrap');
+    const check = document.getElementById('ekMalzemeCheck');
+    const btn   = document.getElementById('addonBtn');
+    const card  = document.getElementById('addonCard');
+    if (numune === 'idrar') {
+      wrap.classList.add('visible');
+    } else {
+      wrap.classList.remove('visible');
+      check.checked = false;
+      aktifAddonAdet = 1;
+      if (btn)  { btn.textContent = 'Ekle'; btn.classList.remove('added'); }
+      if (card) { card.classList.remove('selected'); }
+      const priceEl = document.getElementById('addonPrice');
+      if (priceEl) priceEl.textContent = '+12,00 ₺';
+      const qtyBtns = document.querySelectorAll('.addon-qty-btn');
+      if (qtyBtns.length) {
+        qtyBtns.forEach(b => b.classList.remove('active'));
+        qtyBtns[0].classList.add('active');
+      }
+    }
+  }
+
+  // Görsel listesi — gerçek görseller eklenince src değerlerini güncelle
+  const gallery = [
+    '1_strip_gorsel.png',  // → amfetamin-gorsel-1.png
+    '1_strip_gorsel.png',  // → amfetamin-gorsel-2.png
+    '1_strip_gorsel.png'   // → amfetamin-gorsel-3.png
+  ];
+  let currentIndex = 0;
+
+  function goToImage(index) {
+    const thumbs = document.querySelectorAll('.image-thumb');
+    currentIndex = (index + gallery.length) % gallery.length;
+    const img = document.getElementById('productImage');
+    img.classList.add('fade-out');
+    setTimeout(() => {
+      img.src = gallery[currentIndex];
+      img.classList.remove('fade-out');
+    }, 200);
+    thumbs.forEach((t, i) => t.classList.toggle('active', i === currentIndex));
+  }
+
+  function shiftImage(dir) { goToImage(currentIndex + dir); }
+
+  function selectThumb(btn, src) {
+    const thumbs = document.querySelectorAll('.image-thumb');
+    const idx = Array.from(thumbs).indexOf(btn);
+    goToImage(idx);
+  }
 
   function selectPaket(btn, adet) {
     document.querySelectorAll('.paket-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    // Fiyatlar eklenince burada numune + paket kombinasyonuna göre göster
-    // Örnek: document.getElementById('priceDisplay').textContent = fiyatlar[aktifNumune][adet] + ' ₺';
+    aktifPaket = adet;
+    updatePrice();
+    movePillSlider(btn);
   }
 
   function selectNumune(id, btn) {
-    document.querySelectorAll('.numune-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.numune-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('content-' + id).classList.add('active');
+    const card = btn.closest('.numune-card');
+    animateCardHeight(card, () => {
+      document.querySelectorAll('.numune-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.numune-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('content-' + id).classList.add('active');
+      aktifNumune = id;
+      toggleEkMalzeme(id);
+      updatePrice();
+      movePillSlider(btn);
+    });
 
     // Görsel geçişi
     const img = document.getElementById('productImage');
@@ -658,6 +1029,80 @@ footer {
       img.classList.remove('fade-out');
     }, 200);
   }
+
+  function movePillSlider(btn) {
+    const container = btn.parentElement;
+    const slider = container.querySelector('.numune-slider, .paket-slider');
+    if (!slider) return;
+    slider.style.top    = btn.offsetTop  + 'px';
+    slider.style.left   = btn.offsetLeft + 'px';
+    slider.style.width  = btn.offsetWidth  + 'px';
+    slider.style.height = btn.offsetHeight + 'px';
+  }
+
+  function animateCardHeight(el, change) {
+    // 1. from'u kaydet ve yüksekliği kilitle
+    el.style.transition = 'none';
+    const from = el.offsetHeight;
+    el.style.height = from + 'px';
+    el.offsetHeight; // reflow
+
+    // 2. İçeriği değiştir (yükseklik kilitli, görsel sıçrama yok)
+    change();
+
+    // 3. Hedef yüksekliği ölç
+    el.style.height = 'auto';
+    const to = el.offsetHeight;
+
+    // 4. from'a geri snap (transition kapalı)
+    el.style.height = from + 'px';
+    el.offsetHeight; // reflow: from state kesinleşsin
+
+    // 5. Tarayıcı from frame'ini çizdikten sonra animasyonu başlat
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        el.style.transition = 'height 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        el.style.height = to + 'px';
+        el.addEventListener('transitionend', () => {
+          el.style.height = 'auto';
+          el.style.transition = '';
+        }, { once: true });
+      });
+    });
+  }
+
+  function moveSlider(btn) {
+    const slider = btn.closest('.detail-tabs').querySelector('.tab-slider');
+    slider.style.left   = btn.offsetLeft + 'px';
+    slider.style.width  = btn.offsetWidth + 'px';
+    slider.style.height = btn.offsetHeight + 1 + 'px';
+  }
+
+  function switchTab(btn, panelId) {
+    const wrap = btn.closest('.detail-card-wrap');
+    const card = wrap.querySelector('.detail-card');
+    animateCardHeight(card, () => {
+      wrap.querySelectorAll('.detail-tab').forEach(t => t.classList.remove('active'));
+      wrap.querySelectorAll('.detail-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(panelId).classList.add('active');
+      moveSlider(btn);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeDetailTab = document.querySelector('.detail-tab.active');
+    if (activeDetailTab) moveSlider(activeDetailTab);
+
+    const activeNumuneTab = document.querySelector('.numune-tab.active');
+    if (activeNumuneTab) movePillSlider(activeNumuneTab);
+
+    const activePaketBtn = document.querySelector('.paket-btn.active');
+    if (activePaketBtn) movePillSlider(activePaketBtn);
+  });
+
+  toggleEkMalzeme('idrar');
+  updatePrice();
 </script>
 
 </body>
