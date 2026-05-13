@@ -643,7 +643,7 @@ footer {
         <button class="img-nav img-nav-prev" onclick="shiftImage(-1)" aria-label="Önceki görsel">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
         </button>
-        <img id="productImage" src="1_strip_gorsel.png" alt="Amfetamin Test Şeridi — İdrar">
+        <img id="productImage" src="1_strip_gorsel.png" alt="Amfetamin Test Şeridi — İdrar" decoding="async" width="800" height="800">
         <button class="img-nav img-nav-next" onclick="shiftImage(1)" aria-label="Sonraki görsel">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
@@ -651,13 +651,13 @@ footer {
       </div>
       <div class="image-thumbs">
         <button class="image-thumb active" onclick="selectThumb(this, '1_strip_gorsel.png')" aria-label="Görsel 1">
-          <img src="1_strip_gorsel.png" alt="">
+          <img src="1_strip_gorsel.png" alt="" loading="lazy" decoding="async">
         </button>
         <button class="image-thumb" onclick="selectThumb(this, '1_strip_gorsel.png')" aria-label="Görsel 2">
-          <img src="1_strip_gorsel.png" alt="">
+          <img src="1_strip_gorsel.png" alt="" loading="lazy" decoding="async">
         </button>
         <button class="image-thumb" onclick="selectThumb(this, '1_strip_gorsel.png')" aria-label="Görsel 3">
-          <img src="1_strip_gorsel.png" alt="">
+          <img src="1_strip_gorsel.png" alt="" loading="lazy" decoding="async">
         </button>
       </div>
     </div>
@@ -703,7 +703,7 @@ footer {
         <div class="ek-malzeme-label">Ek Malzeme</div>
         <div class="addon-card" id="addonCard">
           <div class="addon-img">
-            <img src="container-urine.png" alt="İdrar Numune Kabı" style="width:100%; height:100%; object-fit:contain; padding:4px;">
+            <img src="container-urine.png" alt="İdrar Numune Kabı" style="width:100%; height:100%; object-fit:contain; padding:4px;" loading="lazy" decoding="async">
           </div>
           <div class="addon-body">
             <div class="addon-name">İdrar Numune Kabı</div>
@@ -971,9 +971,9 @@ footer {
 
   // Görsel listesi — gerçek görseller eklenince src değerlerini güncelle
   const gallery = [
-    '1_strip_gorsel.png',  // → amfetamin-gorsel-1.png
-    '1_strip_gorsel.png',  // → amfetamin-gorsel-2.png
-    '1_strip_gorsel.png'   // → amfetamin-gorsel-3.png
+    '1_strip_gorsel.png',
+    '1_strip_gorsel.png',
+    '1_strip_gorsel.png'
   ];
   let currentIndex = 0;
 
