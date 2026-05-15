@@ -548,6 +548,61 @@ body::after {
   background: var(--teal); flex-shrink: 0; opacity: 0.7;
 }
 
+/* ── VISUAL HOW-TO STEPS ── */
+.how-steps-visual {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+.how-step-card {
+  display: flex; flex-direction: column; align-items: center;
+  background: var(--light);
+  border-radius: 14px;
+  padding: 1.2rem 0.75rem 1rem;
+  border: 1px solid rgba(26,107,191,0.1);
+  position: relative;
+  text-align: center;
+  gap: 0.75rem;
+}
+.how-step-card-num {
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--teal); color: #fff;
+  font-family: var(--ff-display); font-size: 0.65rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(26,107,191,0.35);
+}
+.how-step-card-img {
+  width: 100%; display: flex; align-items: center; justify-content: center;
+  min-height: 80px;
+}
+.how-step-card-img img { width: 100%; height: auto; display: block; }
+.how-step-card-timer {
+  font-family: var(--ff-display); font-size: 1rem; font-weight: 800;
+  color: var(--teal); line-height: 1;
+}
+.how-step-card-title {
+  font-family: var(--ff-display); font-size: 0.72rem; font-weight: 800;
+  color: var(--navy); line-height: 1.3; margin-bottom: 0.3rem;
+}
+.how-step-card-label {
+  font-family: var(--ff-body); font-size: 0.72rem; font-weight: 300;
+  color: var(--mid); line-height: 1.5;
+}
+.how-step-card-warning {
+  display: flex; align-items: flex-start; gap: 0.35rem;
+  background: rgba(220,80,60,0.07); border: 1px solid rgba(220,80,60,0.18);
+  border-radius: 7px; padding: 0.45rem 0.6rem; margin-top: 0.5rem;
+  font-family: var(--ff-display); font-size: 0.6rem; font-weight: 700;
+  color: #b83c2b; line-height: 1.4; text-align: left;
+}
+@media (max-width: 768px) {
+  .how-steps-visual { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .how-steps-visual { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ── FOOTER ── */
 footer {
   background:
@@ -786,25 +841,63 @@ footer {
 
       <!-- Nasıl Kullanılır? -->
       <div class="detail-panel" id="tab-kullanim">
-        <div class="how-step">
-          <div class="how-step-num">1</div>
-          <div class="how-step-text">Test kitini ambalajından çıkarın ve oda sıcaklığına gelmesini bekleyin (2–30°C).</div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">2</div>
-          <div class="how-step-text">Numuneyi steril bir kap içinde toplayın. İdrar testi için 3–5 mL, ağız sıvısı için özel toplayıcı ucu kullanın.</div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">3</div>
-          <div class="how-step-text">Test şeridini numune kabına daldırın veya pipet ile tete 3–4 damla numune ekleyin.</div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">4</div>
-          <div class="how-step-text">5 dakika bekleyin. Sonucu bu süre içinde okuyun — 10 dakikadan sonra okunan sonuçlar geçersizdir.</div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">5</div>
-          <div class="how-step-text"><strong>Sonuç yorumu:</strong> 2 çizgi = Negatif, 1 çizgi = Pozitif, 0 çizgi = Geçersiz (testi tekrarlayın).</div>
+        <div class="how-steps-visual">
+
+          <div class="how-step-card">
+            <div class="how-step-card-num">1</div>
+            <div class="how-step-card-img">
+              <img src="urine_user_manual/kit_user_manual/idrar_user_manual_1_step.svg" alt="Adım 1">
+            </div>
+            <div class="how-step-card-title">Numune Hazırlama</div>
+            <div class="how-step-card-label">İdrar numunesini numune kabına alın. Numunenin başka maddelerle karışmadığından ve yeterli miktarda olduğundan emin olun.</div>
+          </div>
+
+          <div class="how-step-card">
+            <div class="how-step-card-num">2</div>
+            <div class="how-step-card-img">
+              <img src="urine_user_manual/kit_user_manual/idrar_user_manual_2,4_step.svg" alt="Adım 2">
+            </div>
+            <div class="how-step-card-title">Kapağı Çıkarın</div>
+            <div class="how-step-card-label">Test kasetini ambalajından çıkarın ve kapakları çıkarın.</div>
+          </div>
+
+          <div class="how-step-card">
+            <div class="how-step-card-num">3</div>
+            <div class="how-step-card-img">
+              <img src="urine_user_manual/kit_user_manual/idrar_user_manual_3_step.svg" alt="Adım 3">
+            </div>
+            <div class="how-step-card-title">Kaseti Daldırın</div>
+            <div class="how-step-card-label">Test kasetini idrar numunesine daldırın (MAX çizgisine kadar) ve 20 saniye bekleyin.</div>
+          </div>
+
+          <div class="how-step-card">
+            <div class="how-step-card-num">4</div>
+            <div class="how-step-card-img">
+              <img src="urine_user_manual/kit_user_manual/idrar_user_manual_2,4_step.svg" alt="Adım 4">
+            </div>
+            <div class="how-step-card-title">Düz Zemine Koyun</div>
+            <div class="how-step-card-label">Test kasetinin kapağını kapatın, düz bir zemin üzerine koyun ve 5 dakika bekleyin.</div>
+          </div>
+
+          <div class="how-step-card">
+            <div class="how-step-card-num">5</div>
+            <div class="how-step-card-img" style="flex-direction:column; gap:0.3rem;">
+              <svg viewBox="0 0 60 56" width="130" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="32" r="18" fill="var(--light)" stroke="var(--teal)" stroke-width="2"/>
+                <path d="M30 32 L30 20" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M30 32 L40 32" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="30" cy="32" r="2" fill="var(--navy)"/>
+                <rect x="26" y="9" width="8" height="4" rx="2" fill="var(--navy)"/>
+                <line x1="25" y1="7" x2="27.5" y2="10" stroke="var(--navy)" stroke-width="1.2"/>
+                <line x1="35" y1="7" x2="32.5" y2="10" stroke="var(--navy)" stroke-width="1.2"/>
+              </svg>
+              <div class="how-step-card-timer">5 dak.</div>
+            </div>
+            <div class="how-step-card-title">Sonucu Okuyun</div>
+            <div class="how-step-card-label">5. dakikadan itibaren sonuçları okuyun.</div>
+            <div class="how-step-card-warning">⚠ 10 dakika geçtikten sonra sonuçları değerlendirmeyin.</div>
+          </div>
+
         </div>
       </div>
 
